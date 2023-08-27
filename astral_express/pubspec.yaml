@@ -1,0 +1,20 @@
+name: astral_express
+description: Stellerlink GraphqlQL Client
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.0.6
+
+# Add regular dependencies here.
+dependencies:
+  ferry: ^0.14.2+1
+  ferry_hive_store: ^0.5.1
+  gql_http_link: ^1.0.1
+  hive: ^2.2.3
+
+dev_dependencies:
+  build_runner: ^2.4.6
+  ferry_generator: ^0.8.1
+  lints: ^2.0.0
+  test: ^1.21.0
