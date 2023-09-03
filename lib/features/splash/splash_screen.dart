@@ -1,33 +1,39 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-
+@immutable
+class SplashScreenRoute extends GoRouteData {
+  const SplashScreenRoute();
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const SplashScreen();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class SplashScreen extends ConsumerStatefulWidget {
+  const SplashScreen({super.key});
+  @override
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends ConsumerState<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  init() async {
+    context.go('/a');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey,
-      appBar: const CupertinoNavigationBar(
-        leading: Icon(Icons.abc),
-        middle: Text('Splash Screen'),
-      ),
+    return const Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text('Gamer'),
-          CupertinoButton(
-              child: const Text(
-                'Button ',
-                style: TextStyle(color: Colors.black),
-              ),
-              onPressed: () {}),
-        ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Text('Splash Screen')],
       ),
     );
   }

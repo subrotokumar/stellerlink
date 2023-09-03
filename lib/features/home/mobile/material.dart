@@ -1,29 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stellerlink/core/constants/constants.dart';
-import 'package:stellerlink/features/characters/screens/character_screen.dart';
-import 'package:stellerlink/features/controller/home_tab_controller.dart';
-import 'package:stellerlink/features/webview/inapp_webview_Screen.dart';
 
 class MaterialUI extends ConsumerWidget {
-  const MaterialUI({super.key});
+  const MaterialUI({required this.child, super.key});
+  final Widget child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final page = ref.watch(homePageTabProvider);
-    Color getColor(int n) =>
-        page == n ? Colors.grey.shade800 : Colors.grey.shade600;
+    int calculateSelectedIndex(BuildContext context) {
+      final String location = GoRouterState.of(context).uri.toString();
+      if (location.startsWith('/a')) {
+        return 0;
+      }
+      if (location.startsWith('/b')) {
+        return 1;
+      }
+      if (location.startsWith('/c')) {
+        return 2;
+      }
+      if (location.startsWith('/d')) {
+        return 3;
+      }
+      if (location.startsWith('/e')) {
+        return 4;
+      }
+      return 0;
+    }
+
+    Color getColor(int n) => calculateSelectedIndex(context) == n
+        ? Colors.grey.shade800
+        : Colors.grey.shade600;
+
+    void onItemTapped(int index, BuildContext context) {
+      switch (index) {
+        case 0:
+          GoRouter.of(context).go('/a');
+          break;
+        case 1:
+          GoRouter.of(context).go('/b');
+          break;
+        case 2:
+          GoRouter.of(context).go('/c');
+          break;
+        case 3:
+          GoRouter.of(context).go('/d');
+          break;
+        case 4:
+          GoRouter.of(context).go('/e');
+          break;
+      }
+    }
+
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         height: 50,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        selectedIndex: page,
-        onDestinationSelected: (n) =>
-            ref.watch(homePageTabProvider.notifier).update((state) => n),
+        selectedIndex: calculateSelectedIndex(context),
+        onDestinationSelected: (n) => onItemTapped(n, context),
         destinations: [
           NavigationDestination(
             icon: Image.asset(
-              'assets/icons/char.webp',
+              AssetIcons.character,
               height: 25,
               width: 25,
               color: getColor(0),
@@ -67,16 +106,7 @@ class MaterialUI extends ConsumerWidget {
           ),
         ],
       ),
-      body: const [
-        CharacterScreen(),
-        CharacterScreen(),
-        CharacterScreen(),
-        CharacterScreen(),
-        InAppWebViewScreen(
-          url:
-              'https://act.hoyolab.com/sr/app/interactive-map/index.html#/map/38?shown_types=24,49,306,2,3,4,5,6,7,8,9,10,11,12,134,135,195,196,230',
-        ),
-      ].elementAt(page),
+      body: child,
     );
   }
 }

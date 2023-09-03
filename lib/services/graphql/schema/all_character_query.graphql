@@ -1,0 +1,16 @@
+query AllCharacter {
+  characters {
+    id
+    name
+    images {
+      profile
+      splash
+      transparent
+    }
+    faction
+    rarity
+    path
+    combatType
+    story
+  }
+}

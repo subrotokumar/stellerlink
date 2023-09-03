@@ -1,15 +1,18 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:stellerlink/core/constants/constants.dart';
 
-class InAppWebViewScreen extends StatefulWidget {
-  const InAppWebViewScreen({super.key, required this.url});
-  final String url;
+class InAppWebviewScreen extends StatefulWidget {
+  const InAppWebviewScreen({super.key, this.url});
+  final String? url;
 
   @override
-  State<InAppWebViewScreen> createState() => InAppWebViewScreenState();
+  State<InAppWebviewScreen> createState() => InAppWebviewScreenState();
 }
 
-class InAppWebViewScreenState extends State<InAppWebViewScreen> {
+class InAppWebviewScreenState extends State<InAppWebviewScreen> {
   late InAppWebViewController webViewController;
   double progress = 0;
   String url = '';
@@ -17,7 +20,7 @@ class InAppWebViewScreenState extends State<InAppWebViewScreen> {
   @override
   void initState() {
     super.initState();
-    url = widget.url;
+    url = widget.url ?? interactiveMap;
   }
 
   @override
@@ -28,9 +31,7 @@ class InAppWebViewScreenState extends State<InAppWebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return InAppWebView(
-      initialUrlRequest: URLRequest(
-        url: Uri.parse(widget.url),
-      ),
+      initialUrlRequest: URLRequest(url: Uri.parse(url)),
       initialOptions: InAppWebViewGroupOptions(
         crossPlatform: InAppWebViewOptions(
           cacheEnabled: true,

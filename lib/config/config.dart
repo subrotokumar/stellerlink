@@ -1,6 +1,5 @@
 // *=> router
-export './router/go_router.dart';
-export './router/router_config.dart';
+export 'router/router.dart';
 
 // *=> theme
 export './theme/app_theme.dart';

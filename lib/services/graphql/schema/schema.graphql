@@ -1,0 +1,159 @@
+"""
+The @defer directive may be specified on a fragment spread to imply
+de-prioritization, that causes the fragment to be omitted in the initial
+response, and delivered as a subsequent response afterward. A query with @defer
+directive will cause the request to potentially return multiple responses, where
+non-deferred data is delivered in the initial response and data deferred
+delivered in a subsequent response. @include and @skip take precedence over @defer.
+"""
+directive @defer(if: Boolean = true, label: String) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""
+The @specifiedBy built-in directive is used within the type system definition
+language to provide a scalar specification URL for specifying the behavior of
+custom scalar types.
+"""
+directive @specifiedBy(url: String!) on SCALAR
+
+type AscensionMaterials {
+  quantity: Int!
+  material: Material!
+}
+
+input AscensionMaterialsInput {
+  quantity: Int!
+  material: MaterialInput!
+}
+
+"""Character Data"""
+type Character {
+  id: Int!
+  name: String!
+  images: Images
+  faction: String!
+  rarity: Int!
+  path: Path!
+  combatType: CombatType!
+  story: String!
+  stats: [StatItem!]!
+  eidolons: [Eidolon]!
+}
+
+"""Input Character"""
+input CharacterInput {
+  id: Int!
+  name: String!
+  images: ImageInput!
+  faction: String!
+  rarity: Int!
+  path: Path!
+  combatType: CombatType!
+  story: String!
+  stats: [StatItemInput!]!
+  eidolons: [EidolonInput]!
+}
+
+"""Combat Types"""
+enum CombatType {
+  Physical
+  Fire
+  Ice
+  Lightning
+  Wind
+  Quantum
+  Imaginary
+}
+
+type Eidolon {
+  index: Int!
+  image: String!
+  title: String!
+  description: String!
+  logo: String!
+}
+
+input EidolonInput {
+  index: Int!
+  image: String!
+  title: String!
+  description: String!
+  logo: String!
+}
+
+input ImageInput {
+  splash: String!
+  profile: String!
+  transparent: String
+}
+
+type Images {
+  profile: String!
+  splash: String!
+  transparent: String
+}
+
+type Material {
+  name: String!
+  rarity: Int!
+  type: [String!]!
+  description: String!
+  story: String!
+}
+
+input MaterialInput {
+  name: String!
+  rarity: Int!
+  type: [String!]!
+  description: String!
+  story: String!
+}
+
+"""Mutation"""
+type Mutation {
+  hello: String!
+  addCharacter(input: CharacterInput): Character!
+}
+
+"""Path"""
+enum Path {
+  Destruction
+  Hunt
+  Erudition
+  Harmony
+  Nihility
+  Preservation
+  Abundance
+}
+
+"""Query"""
+type Query {
+  character(id: Int!): Character!
+  characters: [Character!]!
+}
+
+type StatItem {
+  level: String!
+  atk: Float!
+  def: Float!
+  hp: Int!
+  spd: Int!
+  critRate: String!
+  critDamage: String!
+  taunt: Int!
+  enengy: Int!
+  ascensionMaterials: [AscensionMaterials!]!
+}
+
+input StatItemInput {
+  level: String!
+  atk: Float!
+  def: Float!
+  hp: Int!
+  spd: Int!
+  critRate: String!
+  critDamage: String!
+  taunt: Int!
+  enengy: Int!
+  ascensionMaterials: [AscensionMaterialsInput!]
+}
+

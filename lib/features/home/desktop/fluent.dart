@@ -2,20 +2,17 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:stellerlink/core/constants/constants.dart';
 import 'package:flutter/material.dart' as mui;
-import 'package:stellerlink/features/controller/home_tab_controller.dart';
 
 class FluentUI extends ConsumerWidget {
   const FluentUI({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final page = ref.watch(homePageTabProvider);
     return NavigationView(
       pane: NavigationPane(
         size: const NavigationPaneSize(openMaxWidth: 200),
-        selected: page,
-        onChanged: (n) =>
-            ref.watch(homePageTabProvider.notifier).update((state) => n),
+        selected: 1,
+        onChanged: (n) => {},
         items: [
           PaneItem(
             icon: Image.asset(

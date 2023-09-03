@@ -12,7 +12,18 @@
     "**/.factorypath": true,
     "**/macos": true,
     "**/test": true,
-    "**/windows": true
+    "**/windows": true,
+    "linux": true,
+    ".flutter-plugins": true,
+    ".metadata": true,
+    ".flutter-plugins-dependencies": true,
+    "pubspec.lock": true,
+    ".dart_tool": true,
+    ".idea": true,
+    ".vscode": true,
+    "build": true,
+    "web": true
   },
-  "explorerExclude.backup": {}
+  "explorerExclude.backup": {},
+  "editor.acceptSuggestionOnEnter": "on"
 }

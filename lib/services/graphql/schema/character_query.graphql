@@ -1,0 +1,44 @@
+query GetCharacterById($id: Int!) {
+  character(id: $id) {
+    id
+    name
+    images {
+      profile
+      splash
+      transparent
+    }
+    faction
+    rarity
+    path
+    combatType
+    story
+    stats {
+      level
+      atk
+      def
+      hp
+      spd
+      critRate
+      critDamage
+      taunt
+      enengy
+      ascensionMaterials {
+        quantity
+        material {
+          name
+          rarity
+          type
+          description
+          story
+        }
+      }
+    }
+    eidolons {
+      index
+      image
+      title
+      description
+      logo
+    }
+  }
+}

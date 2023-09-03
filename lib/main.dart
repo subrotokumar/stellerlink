@@ -6,14 +6,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:stellerlink/config/router/router_config.dart';
+import 'package:stellerlink/config/router/router.dart';
 import 'package:stellerlink/core/widgets/layout_builder.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode && Platform.isAndroid && Platform.isIOS,
+      enabled: !kReleaseMode && !Platform.isAndroid && !Platform.isIOS,
       builder: (context) => const ProviderScope(
         child: MyApp(),
       ),
@@ -26,16 +26,17 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerConfig);
     return ResponsiveLayout(
       mobile: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'stellerlink',
-        routerConfig: ref.watch(routerConfig),
+        title: 'Stellerlink',
+        routerConfig: router,
       ),
       desktop: FluentApp.router(
         debugShowCheckedModeBanner: false,
         title: 'stellerlink',
-        routerConfig: ref.watch(routerConfig),
+        routerConfig: router,
       ),
     );
   }
