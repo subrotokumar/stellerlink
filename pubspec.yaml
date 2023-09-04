@@ -32,6 +32,7 @@ dependencies:
   gql_http_link: ^1.0.1
   ferry_hive_store: ^0.5.1
   hive_flutter: ^1.1.0
+  salomon_bottom_bar: ^3.3.2
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +44,12 @@ dev_dependencies:
   ferry_generator: ^0.8.1
   envied_generator: ^0.3.0+3
   build_verify: ^3.1.0
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/meta/icon.png"
 
 flutter:
   uses-material-design: true

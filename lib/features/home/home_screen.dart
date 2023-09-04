@@ -2,7 +2,6 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:stellerlink/core/widgets/layout_builder.dart';
 import 'package:stellerlink/features/home/desktop/fluent.dart';
 import 'package:stellerlink/features/home/mobile/material.dart';

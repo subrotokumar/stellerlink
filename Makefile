@@ -11,3 +11,6 @@ gen:
 
 clean:
 	dart run build_runner clean
+
+icons:
+	dart run flutter_launcher_icons

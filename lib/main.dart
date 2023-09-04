@@ -35,7 +35,7 @@ class MyApp extends ConsumerWidget {
       ),
       desktop: FluentApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'stellerlink',
+        title: 'Stellerlink',
         routerConfig: router,
       ),
     );

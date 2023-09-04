@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:stellerlink/config/router/router.dart';
 import 'package:stellerlink/core/constants/constants.dart';
 
 class MaterialUI extends ConsumerWidget {
@@ -9,101 +11,105 @@ class MaterialUI extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int calculateSelectedIndex(BuildContext context) {
+    int currentIndex(BuildContext context) {
       final String location = GoRouterState.of(context).uri.toString();
-      if (location.startsWith('/a')) {
-        return 0;
-      }
-      if (location.startsWith('/b')) {
-        return 1;
-      }
-      if (location.startsWith('/c')) {
-        return 2;
-      }
-      if (location.startsWith('/d')) {
-        return 3;
-      }
-      if (location.startsWith('/e')) {
-        return 4;
-      }
-      return 0;
+      if (location.startsWith(const CharacterPageRoute().location)) return 0;
+      if (location.startsWith(const LightConePageRoute().location)) return 1;
+      if (location.startsWith(const DashboardPageRoute().location)) return 2;
+      if (location.startsWith(const RelicsPageRoute().location)) return 3;
+      if (location.startsWith(const WebviewScreenRoute().location)) return 4;
+      return 2;
     }
 
-    Color getColor(int n) => calculateSelectedIndex(context) == n
-        ? Colors.grey.shade800
-        : Colors.grey.shade600;
+    Color getColor(int n) =>
+        currentIndex(context) == n ? Colors.black : Colors.grey.shade800;
 
     void onItemTapped(int index, BuildContext context) {
       switch (index) {
         case 0:
-          GoRouter.of(context).go('/a');
+          const CharacterPageRoute().go(context);
           break;
         case 1:
-          GoRouter.of(context).go('/b');
+          const LightConePageRoute().go(context);
           break;
         case 2:
-          GoRouter.of(context).go('/c');
+          const DashboardPageRoute().go(context);
           break;
         case 3:
-          GoRouter.of(context).go('/d');
+          const RelicsPageRoute().go(context);
           break;
         case 4:
-          GoRouter.of(context).go('/e');
+          const WebviewScreenRoute().go(context);
           break;
       }
     }
 
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        height: 50,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        selectedIndex: calculateSelectedIndex(context),
-        onDestinationSelected: (n) => onItemTapped(n, context),
-        destinations: [
-          NavigationDestination(
+      bottomNavigationBar: SalomonBottomBar(
+        unselectedItemColor: Colors.pink,
+        selectedItemColor: Colors.blue,
+        currentIndex: currentIndex(context),
+        onTap: (v) => onItemTapped(v, context),
+        items: [
+          SalomonBottomBarItem(
             icon: Image.asset(
               AssetIcons.character,
               height: 25,
               width: 25,
               color: getColor(0),
             ),
-            label: 'Characters',
+            title: Text(
+              'Characters',
+              style: TextStyle(color: getColor(0)),
+            ),
           ),
-          NavigationDestination(
+          SalomonBottomBarItem(
             icon: Image.asset(
               AssetIcons.weapon,
               height: 25,
               width: 25,
               color: getColor(1),
             ),
-            label: 'Light Cones',
+            title: Text(
+              'Lightcones',
+              style: TextStyle(color: getColor(1)),
+            ),
           ),
-          NavigationDestination(
+          SalomonBottomBarItem(
             icon: Image.asset(
               AssetIcons.wish,
               height: 25,
               width: 25,
               color: getColor(2),
             ),
-            label: 'Home',
+            title: Text(
+              'Home',
+              style: TextStyle(color: getColor(2)),
+            ),
           ),
-          NavigationDestination(
+          SalomonBottomBarItem(
             icon: Image.asset(
               AssetIcons.relics,
               height: 25,
               width: 25,
               color: getColor(3),
             ),
-            label: 'Relics',
+            title: Text(
+              'Relics',
+              style: TextStyle(color: getColor(3)),
+            ),
           ),
-          NavigationDestination(
+          SalomonBottomBarItem(
             icon: Icon(
               Icons.map,
               size: 25,
               color: getColor(4),
             ),
-            label: 'Map',
-          ),
+            title: Text(
+              'Map',
+              style: TextStyle(color: getColor(4)),
+            ),
+          )
         ],
       ),
       body: child,

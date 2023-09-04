@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:stellerlink/config/router/router.dart';
 
 @immutable
 class SplashScreenRoute extends GoRouteData {
@@ -24,7 +25,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   init() async {
-    context.go('/a');
+    const DashboardPageRoute().go(context);
   }
 
   @override
