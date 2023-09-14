@@ -10,6 +10,16 @@ export '../graphql/generated/all_character_query.data.gql.dart';
 export '../graphql/generated/all_character_query.req.gql.dart';
 export '../graphql/generated/all_character_query.var.gql.dart';
 
+// relic_query.graphql
+export '../graphql/generated/relic_query.data.gql.dart';
+export '../graphql/generated/relic_query.req.gql.dart';
+export '../graphql/generated/relic_query.var.gql.dart';
+
+// all_relic_query.../graphql
+export '../graphql/generated/all_relics_query.data.gql.dart';
+export '../graphql/generated/all_relics_query.req.gql.dart';
+export '../graphql/generated/all_relics_query.var.gql.dart';
+
 // Ferry
 export 'package:ferry_flutter/ferry_flutter.dart';
 export 'package:ferry/ferry.dart';

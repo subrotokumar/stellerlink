@@ -6,6 +6,7 @@ import 'package:stellerlink/features/characters/screens/character_page.dart';
 import 'package:stellerlink/features/dashboard/screens/dashboard_page.dart';
 import 'package:stellerlink/features/home/home_screen.dart';
 import 'package:stellerlink/features/light_cornes/screens/lightcones_page.dart';
+import 'package:stellerlink/features/relics/screens/relic_info.dart';
 import 'package:stellerlink/features/relics/screens/relics_page.dart';
 import 'package:stellerlink/features/splash/splash_screen.dart';
 import 'package:stellerlink/features/webview/inapp_webview_Screen.dart';
@@ -33,7 +34,7 @@ final routerConfig = Provider(
   routes: <TypedRoute<RouteData>>[
     TypedGoRoute<CharacterPageRoute>(path: '/characters', name: 'character'),
     TypedGoRoute<LightConePageRoute>(path: '/light-cones', name: 'light-cone'),
-    TypedGoRoute<DashboardPageRoute>(path: '/', name: 'dashboard'),
+    TypedGoRoute<DashboardPageRoute>(path: '/home', name: 'dashboard'),
     TypedGoRoute<RelicsPageRoute>(path: '/relics', name: 'relic'),
     TypedGoRoute<WebviewScreenRoute>(path: '/map', name: 'map'),
   ],
@@ -101,4 +102,17 @@ class CharacterInfoScreenRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       CharacterInfoScreen(id: id);
+}
+
+@TypedGoRoute<RelicInfoScreenRoute>(path: '/character/:id/:title')
+class RelicInfoScreenRoute extends GoRouteData {
+  const RelicInfoScreenRoute(
+      {required this.title, required this.$extra, required this.id});
+  final int id;
+  final String title;
+  final GAllRelicQueryData_relics $extra;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      RelicInfoScreen(relic: $extra);
 }

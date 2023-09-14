@@ -1,0 +1,28 @@
+query RelicQuery($id: Int!) {
+  relic(id: $id) {
+    id
+    concepts
+    image
+    type
+    head {
+      concepts
+      image
+    }
+    hands {
+      concepts
+      image
+    }
+    body {
+      concepts
+      image
+    }
+    feet {
+      concepts
+      image
+    }
+    planarSphere {
+      concepts
+      image
+    }
+  }
+}

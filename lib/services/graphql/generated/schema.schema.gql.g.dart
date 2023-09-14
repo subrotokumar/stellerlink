@@ -85,6 +85,27 @@ final BuiltSet<GPath> _$gPathValues = new BuiltSet<GPath>(const <GPath>[
   _$gPathAbundance,
 ]);
 
+const GRelicType _$gRelicTypeCavernRelics = const GRelicType._('CavernRelics');
+const GRelicType _$gRelicTypePlanarOrnaments =
+    const GRelicType._('PlanarOrnaments');
+
+GRelicType _$gRelicTypeValueOf(String name) {
+  switch (name) {
+    case 'CavernRelics':
+      return _$gRelicTypeCavernRelics;
+    case 'PlanarOrnaments':
+      return _$gRelicTypePlanarOrnaments;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<GRelicType> _$gRelicTypeValues =
+    new BuiltSet<GRelicType>(const <GRelicType>[
+  _$gRelicTypeCavernRelics,
+  _$gRelicTypePlanarOrnaments,
+]);
+
 Serializer<GAscensionMaterialsInput> _$gAscensionMaterialsInputSerializer =
     new _$GAscensionMaterialsInputSerializer();
 Serializer<GCharacterInput> _$gCharacterInputSerializer =
@@ -96,6 +117,7 @@ Serializer<GImageInput> _$gImageInputSerializer = new _$GImageInputSerializer();
 Serializer<GMaterialInput> _$gMaterialInputSerializer =
     new _$GMaterialInputSerializer();
 Serializer<GPath> _$gPathSerializer = new _$GPathSerializer();
+Serializer<GRelicType> _$gRelicTypeSerializer = new _$GRelicTypeSerializer();
 Serializer<GStatItemInput> _$gStatItemInputSerializer =
     new _$GStatItemInputSerializer();
 
@@ -168,9 +190,6 @@ class _$GCharacterInputSerializer
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
-      'images',
-      serializers.serialize(object.images,
-          specifiedType: const FullType(GImageInput)),
       'faction',
       serializers.serialize(object.faction,
           specifiedType: const FullType(String)),
@@ -193,7 +212,14 @@ class _$GCharacterInputSerializer
           specifiedType: const FullType(
               BuiltList, const [const FullType.nullable(GEidolonInput)])),
     ];
-
+    Object? value;
+    value = object.images;
+    if (value != null) {
+      result
+        ..add('images')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GImageInput)));
+    }
     return result;
   }
 
@@ -360,15 +386,11 @@ class _$GImageInputSerializer implements StructuredSerializer<GImageInput> {
       'profile',
       serializers.serialize(object.profile,
           specifiedType: const FullType(String)),
+      'transparent',
+      serializers.serialize(object.transparent,
+          specifiedType: const FullType(String)),
     ];
-    Object? value;
-    value = object.transparent;
-    if (value != null) {
-      result
-        ..add('transparent')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
+
     return result;
   }
 
@@ -393,7 +415,7 @@ class _$GImageInputSerializer implements StructuredSerializer<GImageInput> {
           break;
         case 'transparent':
           result.transparent = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -490,6 +512,23 @@ class _$GPathSerializer implements PrimitiveSerializer<GPath> {
       GPath.valueOf(serialized as String);
 }
 
+class _$GRelicTypeSerializer implements PrimitiveSerializer<GRelicType> {
+  @override
+  final Iterable<Type> types = const <Type>[GRelicType];
+  @override
+  final String wireName = 'GRelicType';
+
+  @override
+  Object serialize(Serializers serializers, GRelicType object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      object.name;
+
+  @override
+  GRelicType deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      GRelicType.valueOf(serialized as String);
+}
+
 class _$GStatItemInputSerializer
     implements StructuredSerializer<GStatItemInput> {
   @override
@@ -520,18 +559,14 @@ class _$GStatItemInputSerializer
           specifiedType: const FullType(String)),
       'taunt',
       serializers.serialize(object.taunt, specifiedType: const FullType(int)),
-      'enengy',
-      serializers.serialize(object.enengy, specifiedType: const FullType(int)),
+      'energy',
+      serializers.serialize(object.energy, specifiedType: const FullType(int)),
+      'ascensionMaterials',
+      serializers.serialize(object.ascensionMaterials,
+          specifiedType: const FullType(
+              BuiltList, const [const FullType(GAscensionMaterialsInput)])),
     ];
-    Object? value;
-    value = object.ascensionMaterials;
-    if (value != null) {
-      result
-        ..add('ascensionMaterials')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType(GAscensionMaterialsInput)])));
-    }
+
     return result;
   }
 
@@ -579,8 +614,8 @@ class _$GStatItemInputSerializer
           result.taunt = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
-        case 'enengy':
-          result.enengy = serializers.deserialize(value,
+        case 'energy':
+          result.energy = serializers.deserialize(value,
               specifiedType: const FullType(int))! as int;
           break;
         case 'ascensionMaterials':
@@ -719,7 +754,7 @@ class _$GCharacterInput extends GCharacterInput {
   @override
   final String name;
   @override
-  final GImageInput images;
+  final GImageInput? images;
   @override
   final String faction;
   @override
@@ -741,7 +776,7 @@ class _$GCharacterInput extends GCharacterInput {
   _$GCharacterInput._(
       {required this.id,
       required this.name,
-      required this.images,
+      this.images,
       required this.faction,
       required this.rarity,
       required this.path,
@@ -752,7 +787,6 @@ class _$GCharacterInput extends GCharacterInput {
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'GCharacterInput', 'id');
     BuiltValueNullFieldError.checkNotNull(name, r'GCharacterInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(images, r'GCharacterInput', 'images');
     BuiltValueNullFieldError.checkNotNull(
         faction, r'GCharacterInput', 'faction');
     BuiltValueNullFieldError.checkNotNull(rarity, r'GCharacterInput', 'rarity');
@@ -877,7 +911,7 @@ class GCharacterInputBuilder
     if ($v != null) {
       _id = $v.id;
       _name = $v.name;
-      _images = $v.images.toBuilder();
+      _images = $v.images?.toBuilder();
       _faction = $v.faction;
       _rarity = $v.rarity;
       _path = $v.path;
@@ -913,7 +947,7 @@ class GCharacterInputBuilder
                   id, r'GCharacterInput', 'id'),
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'GCharacterInput', 'name'),
-              images: images.build(),
+              images: _images?.build(),
               faction: BuiltValueNullFieldError.checkNotNull(
                   faction, r'GCharacterInput', 'faction'),
               rarity: BuiltValueNullFieldError.checkNotNull(
@@ -930,7 +964,7 @@ class GCharacterInputBuilder
       late String _$failedField;
       try {
         _$failedField = 'images';
-        images.build();
+        _images?.build();
 
         _$failedField = 'stats';
         stats.build();
@@ -1096,16 +1130,18 @@ class _$GImageInput extends GImageInput {
   @override
   final String profile;
   @override
-  final String? transparent;
+  final String transparent;
 
   factory _$GImageInput([void Function(GImageInputBuilder)? updates]) =>
       (new GImageInputBuilder()..update(updates))._build();
 
   _$GImageInput._(
-      {required this.splash, required this.profile, this.transparent})
+      {required this.splash, required this.profile, required this.transparent})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(splash, r'GImageInput', 'splash');
     BuiltValueNullFieldError.checkNotNull(profile, r'GImageInput', 'profile');
+    BuiltValueNullFieldError.checkNotNull(
+        transparent, r'GImageInput', 'transparent');
   }
 
   @override
@@ -1193,7 +1229,8 @@ class GImageInputBuilder implements Builder<GImageInput, GImageInputBuilder> {
                 splash, r'GImageInput', 'splash'),
             profile: BuiltValueNullFieldError.checkNotNull(
                 profile, r'GImageInput', 'profile'),
-            transparent: transparent);
+            transparent: BuiltValueNullFieldError.checkNotNull(
+                transparent, r'GImageInput', 'transparent'));
     replace(_$result);
     return _$result;
   }
@@ -1373,9 +1410,9 @@ class _$GStatItemInput extends GStatItemInput {
   @override
   final int taunt;
   @override
-  final int enengy;
+  final int energy;
   @override
-  final BuiltList<GAscensionMaterialsInput>? ascensionMaterials;
+  final BuiltList<GAscensionMaterialsInput> ascensionMaterials;
 
   factory _$GStatItemInput([void Function(GStatItemInputBuilder)? updates]) =>
       (new GStatItemInputBuilder()..update(updates))._build();
@@ -1389,8 +1426,8 @@ class _$GStatItemInput extends GStatItemInput {
       required this.critRate,
       required this.critDamage,
       required this.taunt,
-      required this.enengy,
-      this.ascensionMaterials})
+      required this.energy,
+      required this.ascensionMaterials})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(level, r'GStatItemInput', 'level');
     BuiltValueNullFieldError.checkNotNull(atk, r'GStatItemInput', 'atk');
@@ -1402,7 +1439,9 @@ class _$GStatItemInput extends GStatItemInput {
     BuiltValueNullFieldError.checkNotNull(
         critDamage, r'GStatItemInput', 'critDamage');
     BuiltValueNullFieldError.checkNotNull(taunt, r'GStatItemInput', 'taunt');
-    BuiltValueNullFieldError.checkNotNull(enengy, r'GStatItemInput', 'enengy');
+    BuiltValueNullFieldError.checkNotNull(energy, r'GStatItemInput', 'energy');
+    BuiltValueNullFieldError.checkNotNull(
+        ascensionMaterials, r'GStatItemInput', 'ascensionMaterials');
   }
 
   @override
@@ -1425,7 +1464,7 @@ class _$GStatItemInput extends GStatItemInput {
         critRate == other.critRate &&
         critDamage == other.critDamage &&
         taunt == other.taunt &&
-        enengy == other.enengy &&
+        energy == other.energy &&
         ascensionMaterials == other.ascensionMaterials;
   }
 
@@ -1440,7 +1479,7 @@ class _$GStatItemInput extends GStatItemInput {
     _$hash = $jc(_$hash, critRate.hashCode);
     _$hash = $jc(_$hash, critDamage.hashCode);
     _$hash = $jc(_$hash, taunt.hashCode);
-    _$hash = $jc(_$hash, enengy.hashCode);
+    _$hash = $jc(_$hash, energy.hashCode);
     _$hash = $jc(_$hash, ascensionMaterials.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -1457,7 +1496,7 @@ class _$GStatItemInput extends GStatItemInput {
           ..add('critRate', critRate)
           ..add('critDamage', critDamage)
           ..add('taunt', taunt)
-          ..add('enengy', enengy)
+          ..add('energy', energy)
           ..add('ascensionMaterials', ascensionMaterials))
         .toString();
   }
@@ -1499,9 +1538,9 @@ class GStatItemInputBuilder
   int? get taunt => _$this._taunt;
   set taunt(int? taunt) => _$this._taunt = taunt;
 
-  int? _enengy;
-  int? get enengy => _$this._enengy;
-  set enengy(int? enengy) => _$this._enengy = enengy;
+  int? _energy;
+  int? get energy => _$this._energy;
+  set energy(int? energy) => _$this._energy = energy;
 
   ListBuilder<GAscensionMaterialsInput>? _ascensionMaterials;
   ListBuilder<GAscensionMaterialsInput> get ascensionMaterials =>
@@ -1524,8 +1563,8 @@ class GStatItemInputBuilder
       _critRate = $v.critRate;
       _critDamage = $v.critDamage;
       _taunt = $v.taunt;
-      _enengy = $v.enengy;
-      _ascensionMaterials = $v.ascensionMaterials?.toBuilder();
+      _energy = $v.energy;
+      _ascensionMaterials = $v.ascensionMaterials.toBuilder();
       _$v = null;
     }
     return this;
@@ -1566,14 +1605,14 @@ class GStatItemInputBuilder
                   critDamage, r'GStatItemInput', 'critDamage'),
               taunt: BuiltValueNullFieldError.checkNotNull(
                   taunt, r'GStatItemInput', 'taunt'),
-              enengy: BuiltValueNullFieldError.checkNotNull(
-                  enengy, r'GStatItemInput', 'enengy'),
-              ascensionMaterials: _ascensionMaterials?.build());
+              energy: BuiltValueNullFieldError.checkNotNull(
+                  energy, r'GStatItemInput', 'energy'),
+              ascensionMaterials: ascensionMaterials.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'ascensionMaterials';
-        _ascensionMaterials?.build();
+        ascensionMaterials.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GStatItemInput', _$failedField, e.toString());

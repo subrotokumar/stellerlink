@@ -43,7 +43,7 @@ abstract class GCharacterInput
 
   int get id;
   String get name;
-  GImageInput get images;
+  GImageInput? get images;
   String get faction;
   int get rarity;
   GPath get path;
@@ -117,7 +117,7 @@ abstract class GImageInput implements Built<GImageInput, GImageInputBuilder> {
 
   String get splash;
   String get profile;
-  String? get transparent;
+  String get transparent;
   static Serializer<GImageInput> get serializer => _$gImageInputSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
         GImageInput.serializer,
@@ -177,6 +177,18 @@ class GPath extends EnumClass {
   static GPath valueOf(String name) => _$gPathValueOf(name);
 }
 
+class GRelicType extends EnumClass {
+  const GRelicType._(String name) : super(name);
+
+  static const GRelicType CavernRelics = _$gRelicTypeCavernRelics;
+
+  static const GRelicType PlanarOrnaments = _$gRelicTypePlanarOrnaments;
+
+  static Serializer<GRelicType> get serializer => _$gRelicTypeSerializer;
+  static BuiltSet<GRelicType> get values => _$gRelicTypeValues;
+  static GRelicType valueOf(String name) => _$gRelicTypeValueOf(name);
+}
+
 abstract class GStatItemInput
     implements Built<GStatItemInput, GStatItemInputBuilder> {
   GStatItemInput._();
@@ -192,8 +204,8 @@ abstract class GStatItemInput
   String get critRate;
   String get critDamage;
   int get taunt;
-  int get enengy;
-  BuiltList<GAscensionMaterialsInput>? get ascensionMaterials;
+  int get energy;
+  BuiltList<GAscensionMaterialsInput> get ascensionMaterials;
   static Serializer<GStatItemInput> get serializer =>
       _$gStatItemInputSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

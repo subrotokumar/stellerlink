@@ -14,7 +14,11 @@ class AssetIcons {
 }
 
 class AssetAnimations {
-  final String base = 'assets/animations';
+  static const String _base = 'assets/animations';
+  static const String map = '$_base/map.json';
+  static const String loading = '$_base/loading.json';
+  static const String spaceWar = '$_base/space_war.json';
+  static const String space = '$_base/space.json';
 }
 
 const String authorization =

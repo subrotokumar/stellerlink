@@ -1,6 +1,5 @@
-
 fetch:
-	get-graphql-schema http://localhost:8080/graphql > lib/graphql/schema/schema.graphql
+	get-graphql-schema https://cultures-adidas-pressed-cameron.trycloudflare.com/graphql > lib/services/graphql/schema/schema.graphql
 	
 generate:
 	make clean

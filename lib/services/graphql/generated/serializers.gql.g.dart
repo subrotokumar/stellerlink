@@ -13,6 +13,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAllCharacterData_characters_images.serializer)
       ..add(GAllCharacterReq.serializer)
       ..add(GAllCharacterVars.serializer)
+      ..add(GAllRelicQueryData.serializer)
+      ..add(GAllRelicQueryData_relics.serializer)
+      ..add(GAllRelicQueryData_relics_body.serializer)
+      ..add(GAllRelicQueryData_relics_feet.serializer)
+      ..add(GAllRelicQueryData_relics_hands.serializer)
+      ..add(GAllRelicQueryData_relics_head.serializer)
+      ..add(GAllRelicQueryData_relics_planarSphere.serializer)
+      ..add(GAllRelicQueryReq.serializer)
+      ..add(GAllRelicQueryVars.serializer)
       ..add(GAscensionMaterialsInput.serializer)
       ..add(GCharacterInput.serializer)
       ..add(GCombatType.serializer)
@@ -30,11 +39,25 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GImageInput.serializer)
       ..add(GMaterialInput.serializer)
       ..add(GPath.serializer)
+      ..add(GRelicQueryData.serializer)
+      ..add(GRelicQueryData_relic.serializer)
+      ..add(GRelicQueryData_relic_body.serializer)
+      ..add(GRelicQueryData_relic_feet.serializer)
+      ..add(GRelicQueryData_relic_hands.serializer)
+      ..add(GRelicQueryData_relic_head.serializer)
+      ..add(GRelicQueryData_relic_planarSphere.serializer)
+      ..add(GRelicQueryReq.serializer)
+      ..add(GRelicQueryVars.serializer)
+      ..add(GRelicType.serializer)
       ..add(GStatItemInput.serializer)
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GAllCharacterData_characters)]),
           () => new ListBuilder<GAllCharacterData_characters>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(GAllRelicQueryData_relics)]),
+          () => new ListBuilder<GAllRelicQueryData_relics>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GAscensionMaterialsInput)]),

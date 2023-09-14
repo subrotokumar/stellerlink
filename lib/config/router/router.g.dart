@@ -10,6 +10,7 @@ List<RouteBase> get $appRoutes => [
       $homeScreenShellRoute,
       $splashScreenRoute,
       $characterInfoScreenRoute,
+      $relicInfoScreenRoute,
     ];
 
 RouteBase get $homeScreenShellRoute => ShellRouteData.$route(
@@ -26,7 +27,7 @@ RouteBase get $homeScreenShellRoute => ShellRouteData.$route(
           factory: $LightConePageRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: '/',
+          path: '/home',
           name: 'dashboard',
           factory: $DashboardPageRouteExtension._fromState,
         ),
@@ -89,7 +90,7 @@ extension $DashboardPageRouteExtension on DashboardPageRoute {
       const DashboardPageRoute();
 
   String get location => GoRouteData.$location(
-        '/',
+        '/home',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -189,4 +190,33 @@ extension $CharacterInfoScreenRouteExtension on CharacterInfoScreenRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $relicInfoScreenRoute => GoRouteData.$route(
+      path: '/character/:id/:title',
+      factory: $RelicInfoScreenRouteExtension._fromState,
+    );
+
+extension $RelicInfoScreenRouteExtension on RelicInfoScreenRoute {
+  static RelicInfoScreenRoute _fromState(GoRouterState state) =>
+      RelicInfoScreenRoute(
+        title: state.pathParameters['title']!,
+        id: int.parse(state.pathParameters['id']!),
+        $extra: state.extra as GAllRelicQueryData_relics,
+      );
+
+  String get location => GoRouteData.$location(
+        '/character/${Uri.encodeComponent(id.toString())}/${Uri.encodeComponent(title)}',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: $extra);
+
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location, extra: $extra);
+
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
 }

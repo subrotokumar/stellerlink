@@ -43,7 +43,7 @@ type Character {
 input CharacterInput {
   id: Int!
   name: String!
-  images: ImageInput!
+  images: ImageInput
   faction: String!
   rarity: Int!
   path: Path!
@@ -83,7 +83,7 @@ input EidolonInput {
 input ImageInput {
   splash: String!
   profile: String!
-  transparent: String
+  transparent: String!
 }
 
 type Images {
@@ -129,6 +129,33 @@ enum Path {
 type Query {
   character(id: Int!): Character!
   characters: [Character!]!
+  relic(id: Int!): Relic!
+  relics: [Relic!]!
+}
+
+"""Relics"""
+type Relic {
+  id: Int!
+  concepts: String!
+  image: String!
+  type: RelicType!
+  head: RelicSet
+  hands: RelicSet
+  body: RelicSet
+  feet: RelicSet
+  planarSphere: RelicSet
+  linkRope: RelicSet
+  setEffect: String!
+}
+
+type RelicSet {
+  concepts: String!
+  image: String!
+}
+
+enum RelicType {
+  CavernRelics
+  PlanarOrnaments
 }
 
 type StatItem {
@@ -153,7 +180,7 @@ input StatItemInput {
   critRate: String!
   critDamage: String!
   taunt: Int!
-  enengy: Int!
-  ascensionMaterials: [AscensionMaterialsInput!]
+  energy: Int!
+  ascensionMaterials: [AscensionMaterialsInput!]!
 }
 

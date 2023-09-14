@@ -16,6 +16,19 @@ import 'package:stellerlink/services/graphql/generated/all_character_query.req.g
     show GAllCharacterReq;
 import 'package:stellerlink/services/graphql/generated/all_character_query.var.gql.dart'
     show GAllCharacterVars;
+import 'package:stellerlink/services/graphql/generated/all_relics_query.data.gql.dart'
+    show
+        GAllRelicQueryData,
+        GAllRelicQueryData_relics,
+        GAllRelicQueryData_relics_body,
+        GAllRelicQueryData_relics_feet,
+        GAllRelicQueryData_relics_hands,
+        GAllRelicQueryData_relics_head,
+        GAllRelicQueryData_relics_planarSphere;
+import 'package:stellerlink/services/graphql/generated/all_relics_query.req.gql.dart'
+    show GAllRelicQueryReq;
+import 'package:stellerlink/services/graphql/generated/all_relics_query.var.gql.dart'
+    show GAllRelicQueryVars;
 import 'package:stellerlink/services/graphql/generated/character_query.data.gql.dart'
     show
         GGetCharacterByIdData,
@@ -29,6 +42,19 @@ import 'package:stellerlink/services/graphql/generated/character_query.req.gql.d
     show GGetCharacterByIdReq;
 import 'package:stellerlink/services/graphql/generated/character_query.var.gql.dart'
     show GGetCharacterByIdVars;
+import 'package:stellerlink/services/graphql/generated/relic_query.data.gql.dart'
+    show
+        GRelicQueryData,
+        GRelicQueryData_relic,
+        GRelicQueryData_relic_body,
+        GRelicQueryData_relic_feet,
+        GRelicQueryData_relic_hands,
+        GRelicQueryData_relic_head,
+        GRelicQueryData_relic_planarSphere;
+import 'package:stellerlink/services/graphql/generated/relic_query.req.gql.dart'
+    show GRelicQueryReq;
+import 'package:stellerlink/services/graphql/generated/relic_query.var.gql.dart'
+    show GRelicQueryVars;
 import 'package:stellerlink/services/graphql/generated/schema.schema.gql.dart'
     show
         GAscensionMaterialsInput,
@@ -38,6 +64,7 @@ import 'package:stellerlink/services/graphql/generated/schema.schema.gql.dart'
         GImageInput,
         GMaterialInput,
         GPath,
+        GRelicType,
         GStatItemInput;
 
 part 'serializers.gql.g.dart';
@@ -51,6 +78,15 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAllCharacterData_characters_images,
   GAllCharacterReq,
   GAllCharacterVars,
+  GAllRelicQueryData,
+  GAllRelicQueryData_relics,
+  GAllRelicQueryData_relics_body,
+  GAllRelicQueryData_relics_feet,
+  GAllRelicQueryData_relics_hands,
+  GAllRelicQueryData_relics_head,
+  GAllRelicQueryData_relics_planarSphere,
+  GAllRelicQueryReq,
+  GAllRelicQueryVars,
   GAscensionMaterialsInput,
   GCharacterInput,
   GCombatType,
@@ -67,6 +103,16 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GImageInput,
   GMaterialInput,
   GPath,
+  GRelicQueryData,
+  GRelicQueryData_relic,
+  GRelicQueryData_relic_body,
+  GRelicQueryData_relic_feet,
+  GRelicQueryData_relic_hands,
+  GRelicQueryData_relic_head,
+  GRelicQueryData_relic_planarSphere,
+  GRelicQueryReq,
+  GRelicQueryVars,
+  GRelicType,
   GStatItemInput,
 ])
 final Serializers serializers = _serializersBuilder.build();
