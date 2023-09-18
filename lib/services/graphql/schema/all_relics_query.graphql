@@ -4,6 +4,7 @@ query AllRelicQuery {
     concepts
     image
     type
+    setEffect
     head {
       concepts
       image
@@ -21,6 +22,10 @@ query AllRelicQuery {
       image
     }
     planarSphere {
+      concepts
+      image
+    }
+    linkRope {
       concepts
       image
     }

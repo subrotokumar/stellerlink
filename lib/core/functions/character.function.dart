@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../services/graphql/astral_express.dart';
+import 'package:stellerlink/services/graphql/astral_express.dart';
 
 Color combatTypeCoolor(GCombatType? combatType) {
   return switch (combatType) {

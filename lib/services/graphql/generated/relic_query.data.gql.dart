@@ -52,6 +52,7 @@ abstract class GRelicQueryData_relic
   String get concepts;
   String get image;
   _i2.GRelicType get type;
+  String get setEffect;
   GRelicQueryData_relic_head? get head;
   GRelicQueryData_relic_hands? get hands;
   GRelicQueryData_relic_body? get body;

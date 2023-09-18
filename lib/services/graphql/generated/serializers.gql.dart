@@ -24,6 +24,7 @@ import 'package:stellerlink/services/graphql/generated/all_relics_query.data.gql
         GAllRelicQueryData_relics_feet,
         GAllRelicQueryData_relics_hands,
         GAllRelicQueryData_relics_head,
+        GAllRelicQueryData_relics_linkRope,
         GAllRelicQueryData_relics_planarSphere;
 import 'package:stellerlink/services/graphql/generated/all_relics_query.req.gql.dart'
     show GAllRelicQueryReq;
@@ -84,6 +85,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAllRelicQueryData_relics_feet,
   GAllRelicQueryData_relics_hands,
   GAllRelicQueryData_relics_head,
+  GAllRelicQueryData_relics_linkRope,
   GAllRelicQueryData_relics_planarSphere,
   GAllRelicQueryReq,
   GAllRelicQueryVars,

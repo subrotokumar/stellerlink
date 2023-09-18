@@ -4,6 +4,7 @@ query RelicQuery($id: Int!) {
     concepts
     image
     type
+    setEffect
     head {
       concepts
       image

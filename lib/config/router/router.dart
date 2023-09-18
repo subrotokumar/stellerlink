@@ -104,7 +104,7 @@ class CharacterInfoScreenRoute extends GoRouteData {
       CharacterInfoScreen(id: id);
 }
 
-@TypedGoRoute<RelicInfoScreenRoute>(path: '/character/:id/:title')
+@TypedGoRoute<RelicInfoScreenRoute>(path: '/relic/:id/:title')
 class RelicInfoScreenRoute extends GoRouteData {
   const RelicInfoScreenRoute(
       {required this.title, required this.$extra, required this.id});

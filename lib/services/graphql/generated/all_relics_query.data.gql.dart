@@ -54,11 +54,13 @@ abstract class GAllRelicQueryData_relics
   String get concepts;
   String get image;
   _i2.GRelicType get type;
+  String get setEffect;
   GAllRelicQueryData_relics_head? get head;
   GAllRelicQueryData_relics_hands? get hands;
   GAllRelicQueryData_relics_body? get body;
   GAllRelicQueryData_relics_feet? get feet;
   GAllRelicQueryData_relics_planarSphere? get planarSphere;
+  GAllRelicQueryData_relics_linkRope? get linkRope;
   static Serializer<GAllRelicQueryData_relics> get serializer =>
       _$gAllRelicQueryDataRelicsSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -215,6 +217,36 @@ abstract class GAllRelicQueryData_relics_planarSphere
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GAllRelicQueryData_relics_planarSphere.serializer,
+        json,
+      );
+}
+
+abstract class GAllRelicQueryData_relics_linkRope
+    implements
+        Built<GAllRelicQueryData_relics_linkRope,
+            GAllRelicQueryData_relics_linkRopeBuilder> {
+  GAllRelicQueryData_relics_linkRope._();
+
+  factory GAllRelicQueryData_relics_linkRope(
+          [Function(GAllRelicQueryData_relics_linkRopeBuilder b) updates]) =
+      _$GAllRelicQueryData_relics_linkRope;
+
+  static void _initializeBuilder(GAllRelicQueryData_relics_linkRopeBuilder b) =>
+      b..G__typename = 'RelicSet';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get concepts;
+  String get image;
+  static Serializer<GAllRelicQueryData_relics_linkRope> get serializer =>
+      _$gAllRelicQueryDataRelicsLinkRopeSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GAllRelicQueryData_relics_linkRope.serializer,
+        this,
+      ) as Map<String, dynamic>);
+  static GAllRelicQueryData_relics_linkRope? fromJson(
+          Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GAllRelicQueryData_relics_linkRope.serializer,
         json,
       );
 }

@@ -193,7 +193,7 @@ extension $CharacterInfoScreenRouteExtension on CharacterInfoScreenRoute {
 }
 
 RouteBase get $relicInfoScreenRoute => GoRouteData.$route(
-      path: '/character/:id/:title',
+      path: '/relic/:id/:title',
       factory: $RelicInfoScreenRouteExtension._fromState,
     );
 
@@ -206,7 +206,7 @@ extension $RelicInfoScreenRouteExtension on RelicInfoScreenRoute {
       );
 
   String get location => GoRouteData.$location(
-        '/character/${Uri.encodeComponent(id.toString())}/${Uri.encodeComponent(title)}',
+        '/relic/${Uri.encodeComponent(id.toString())}/${Uri.encodeComponent(title)}',
       );
 
   void go(BuildContext context) => context.go(location, extra: $extra);

@@ -101,6 +101,9 @@ class _$GRelicQueryData_relicSerializer
       'type',
       serializers.serialize(object.type,
           specifiedType: const FullType(_i2.GRelicType)),
+      'setEffect',
+      serializers.serialize(object.setEffect,
+          specifiedType: const FullType(String)),
     ];
     Object? value;
     value = object.head;
@@ -172,6 +175,10 @@ class _$GRelicQueryData_relicSerializer
         case 'type':
           result.type = serializers.deserialize(value,
               specifiedType: const FullType(_i2.GRelicType))! as _i2.GRelicType;
+          break;
+        case 'setEffect':
+          result.setEffect = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
         case 'head':
           result.head.replace(serializers.deserialize(value,
@@ -633,6 +640,8 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
   @override
   final _i2.GRelicType type;
   @override
+  final String setEffect;
+  @override
   final GRelicQueryData_relic_head? head;
   @override
   final GRelicQueryData_relic_hands? hands;
@@ -653,6 +662,7 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
       required this.concepts,
       required this.image,
       required this.type,
+      required this.setEffect,
       this.head,
       this.hands,
       this.body,
@@ -668,6 +678,8 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
         image, r'GRelicQueryData_relic', 'image');
     BuiltValueNullFieldError.checkNotNull(
         type, r'GRelicQueryData_relic', 'type');
+    BuiltValueNullFieldError.checkNotNull(
+        setEffect, r'GRelicQueryData_relic', 'setEffect');
   }
 
   @override
@@ -688,6 +700,7 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
         concepts == other.concepts &&
         image == other.image &&
         type == other.type &&
+        setEffect == other.setEffect &&
         head == other.head &&
         hands == other.hands &&
         body == other.body &&
@@ -703,6 +716,7 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, setEffect.hashCode);
     _$hash = $jc(_$hash, head.hashCode);
     _$hash = $jc(_$hash, hands.hashCode);
     _$hash = $jc(_$hash, body.hashCode);
@@ -720,6 +734,7 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
           ..add('concepts', concepts)
           ..add('image', image)
           ..add('type', type)
+          ..add('setEffect', setEffect)
           ..add('head', head)
           ..add('hands', hands)
           ..add('body', body)
@@ -752,6 +767,10 @@ class GRelicQueryData_relicBuilder
   _i2.GRelicType? _type;
   _i2.GRelicType? get type => _$this._type;
   set type(_i2.GRelicType? type) => _$this._type = type;
+
+  String? _setEffect;
+  String? get setEffect => _$this._setEffect;
+  set setEffect(String? setEffect) => _$this._setEffect = setEffect;
 
   GRelicQueryData_relic_headBuilder? _head;
   GRelicQueryData_relic_headBuilder get head =>
@@ -791,6 +810,7 @@ class GRelicQueryData_relicBuilder
       _concepts = $v.concepts;
       _image = $v.image;
       _type = $v.type;
+      _setEffect = $v.setEffect;
       _head = $v.head?.toBuilder();
       _hands = $v.hands?.toBuilder();
       _body = $v.body?.toBuilder();
@@ -830,6 +850,8 @@ class GRelicQueryData_relicBuilder
                   image, r'GRelicQueryData_relic', 'image'),
               type: BuiltValueNullFieldError.checkNotNull(
                   type, r'GRelicQueryData_relic', 'type'),
+              setEffect: BuiltValueNullFieldError.checkNotNull(
+                  setEffect, r'GRelicQueryData_relic', 'setEffect'),
               head: _head?.build(),
               hands: _hands?.build(),
               body: _body?.build(),

@@ -25,6 +25,9 @@ Serializer<GAllRelicQueryData_relics_feet>
 Serializer<GAllRelicQueryData_relics_planarSphere>
     _$gAllRelicQueryDataRelicsPlanarSphereSerializer =
     new _$GAllRelicQueryData_relics_planarSphereSerializer();
+Serializer<GAllRelicQueryData_relics_linkRope>
+    _$gAllRelicQueryDataRelicsLinkRopeSerializer =
+    new _$GAllRelicQueryData_relics_linkRopeSerializer();
 
 class _$GAllRelicQueryDataSerializer
     implements StructuredSerializer<GAllRelicQueryData> {
@@ -108,6 +111,9 @@ class _$GAllRelicQueryData_relicsSerializer
       'type',
       serializers.serialize(object.type,
           specifiedType: const FullType(_i2.GRelicType)),
+      'setEffect',
+      serializers.serialize(object.setEffect,
+          specifiedType: const FullType(String)),
     ];
     Object? value;
     value = object.head;
@@ -146,6 +152,13 @@ class _$GAllRelicQueryData_relicsSerializer
             specifiedType:
                 const FullType(GAllRelicQueryData_relics_planarSphere)));
     }
+    value = object.linkRope;
+    if (value != null) {
+      result
+        ..add('linkRope')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GAllRelicQueryData_relics_linkRope)));
+    }
     return result;
   }
 
@@ -181,6 +194,10 @@ class _$GAllRelicQueryData_relicsSerializer
           result.type = serializers.deserialize(value,
               specifiedType: const FullType(_i2.GRelicType))! as _i2.GRelicType;
           break;
+        case 'setEffect':
+          result.setEffect = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
         case 'head':
           result.head.replace(serializers.deserialize(value,
                   specifiedType:
@@ -210,6 +227,12 @@ class _$GAllRelicQueryData_relicsSerializer
                   specifiedType:
                       const FullType(GAllRelicQueryData_relics_planarSphere))!
               as GAllRelicQueryData_relics_planarSphere);
+          break;
+        case 'linkRope':
+          result.linkRope.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(GAllRelicQueryData_relics_linkRope))!
+              as GAllRelicQueryData_relics_linkRope);
           break;
       }
     }
@@ -518,6 +541,66 @@ class _$GAllRelicQueryData_relics_planarSphereSerializer
   }
 }
 
+class _$GAllRelicQueryData_relics_linkRopeSerializer
+    implements StructuredSerializer<GAllRelicQueryData_relics_linkRope> {
+  @override
+  final Iterable<Type> types = const [
+    GAllRelicQueryData_relics_linkRope,
+    _$GAllRelicQueryData_relics_linkRope
+  ];
+  @override
+  final String wireName = 'GAllRelicQueryData_relics_linkRope';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GAllRelicQueryData_relics_linkRope object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'concepts',
+      serializers.serialize(object.concepts,
+          specifiedType: const FullType(String)),
+      'image',
+      serializers.serialize(object.image,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GAllRelicQueryData_relics_linkRope deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GAllRelicQueryData_relics_linkRopeBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'concepts':
+          result.concepts = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'image':
+          result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$GAllRelicQueryData extends GAllRelicQueryData {
   @override
   final String G__typename;
@@ -649,6 +732,8 @@ class _$GAllRelicQueryData_relics extends GAllRelicQueryData_relics {
   @override
   final _i2.GRelicType type;
   @override
+  final String setEffect;
+  @override
   final GAllRelicQueryData_relics_head? head;
   @override
   final GAllRelicQueryData_relics_hands? hands;
@@ -658,6 +743,8 @@ class _$GAllRelicQueryData_relics extends GAllRelicQueryData_relics {
   final GAllRelicQueryData_relics_feet? feet;
   @override
   final GAllRelicQueryData_relics_planarSphere? planarSphere;
+  @override
+  final GAllRelicQueryData_relics_linkRope? linkRope;
 
   factory _$GAllRelicQueryData_relics(
           [void Function(GAllRelicQueryData_relicsBuilder)? updates]) =>
@@ -669,11 +756,13 @@ class _$GAllRelicQueryData_relics extends GAllRelicQueryData_relics {
       required this.concepts,
       required this.image,
       required this.type,
+      required this.setEffect,
       this.head,
       this.hands,
       this.body,
       this.feet,
-      this.planarSphere})
+      this.planarSphere,
+      this.linkRope})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GAllRelicQueryData_relics', 'G__typename');
@@ -685,6 +774,8 @@ class _$GAllRelicQueryData_relics extends GAllRelicQueryData_relics {
         image, r'GAllRelicQueryData_relics', 'image');
     BuiltValueNullFieldError.checkNotNull(
         type, r'GAllRelicQueryData_relics', 'type');
+    BuiltValueNullFieldError.checkNotNull(
+        setEffect, r'GAllRelicQueryData_relics', 'setEffect');
   }
 
   @override
@@ -705,11 +796,13 @@ class _$GAllRelicQueryData_relics extends GAllRelicQueryData_relics {
         concepts == other.concepts &&
         image == other.image &&
         type == other.type &&
+        setEffect == other.setEffect &&
         head == other.head &&
         hands == other.hands &&
         body == other.body &&
         feet == other.feet &&
-        planarSphere == other.planarSphere;
+        planarSphere == other.planarSphere &&
+        linkRope == other.linkRope;
   }
 
   @override
@@ -720,11 +813,13 @@ class _$GAllRelicQueryData_relics extends GAllRelicQueryData_relics {
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, setEffect.hashCode);
     _$hash = $jc(_$hash, head.hashCode);
     _$hash = $jc(_$hash, hands.hashCode);
     _$hash = $jc(_$hash, body.hashCode);
     _$hash = $jc(_$hash, feet.hashCode);
     _$hash = $jc(_$hash, planarSphere.hashCode);
+    _$hash = $jc(_$hash, linkRope.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -737,11 +832,13 @@ class _$GAllRelicQueryData_relics extends GAllRelicQueryData_relics {
           ..add('concepts', concepts)
           ..add('image', image)
           ..add('type', type)
+          ..add('setEffect', setEffect)
           ..add('head', head)
           ..add('hands', hands)
           ..add('body', body)
           ..add('feet', feet)
-          ..add('planarSphere', planarSphere))
+          ..add('planarSphere', planarSphere)
+          ..add('linkRope', linkRope))
         .toString();
   }
 }
@@ -770,6 +867,10 @@ class GAllRelicQueryData_relicsBuilder
   _i2.GRelicType? _type;
   _i2.GRelicType? get type => _$this._type;
   set type(_i2.GRelicType? type) => _$this._type = type;
+
+  String? _setEffect;
+  String? get setEffect => _$this._setEffect;
+  set setEffect(String? setEffect) => _$this._setEffect = setEffect;
 
   GAllRelicQueryData_relics_headBuilder? _head;
   GAllRelicQueryData_relics_headBuilder get head =>
@@ -800,6 +901,12 @@ class GAllRelicQueryData_relicsBuilder
           GAllRelicQueryData_relics_planarSphereBuilder? planarSphere) =>
       _$this._planarSphere = planarSphere;
 
+  GAllRelicQueryData_relics_linkRopeBuilder? _linkRope;
+  GAllRelicQueryData_relics_linkRopeBuilder get linkRope =>
+      _$this._linkRope ??= new GAllRelicQueryData_relics_linkRopeBuilder();
+  set linkRope(GAllRelicQueryData_relics_linkRopeBuilder? linkRope) =>
+      _$this._linkRope = linkRope;
+
   GAllRelicQueryData_relicsBuilder() {
     GAllRelicQueryData_relics._initializeBuilder(this);
   }
@@ -812,11 +919,13 @@ class GAllRelicQueryData_relicsBuilder
       _concepts = $v.concepts;
       _image = $v.image;
       _type = $v.type;
+      _setEffect = $v.setEffect;
       _head = $v.head?.toBuilder();
       _hands = $v.hands?.toBuilder();
       _body = $v.body?.toBuilder();
       _feet = $v.feet?.toBuilder();
       _planarSphere = $v.planarSphere?.toBuilder();
+      _linkRope = $v.linkRope?.toBuilder();
       _$v = null;
     }
     return this;
@@ -851,11 +960,14 @@ class GAllRelicQueryData_relicsBuilder
                   image, r'GAllRelicQueryData_relics', 'image'),
               type: BuiltValueNullFieldError.checkNotNull(
                   type, r'GAllRelicQueryData_relics', 'type'),
+              setEffect: BuiltValueNullFieldError.checkNotNull(
+                  setEffect, r'GAllRelicQueryData_relics', 'setEffect'),
               head: _head?.build(),
               hands: _hands?.build(),
               body: _body?.build(),
               feet: _feet?.build(),
-              planarSphere: _planarSphere?.build());
+              planarSphere: _planarSphere?.build(),
+              linkRope: _linkRope?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -869,6 +981,8 @@ class GAllRelicQueryData_relicsBuilder
         _feet?.build();
         _$failedField = 'planarSphere';
         _planarSphere?.build();
+        _$failedField = 'linkRope';
+        _linkRope?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GAllRelicQueryData_relics', _$failedField, e.toString());
@@ -1492,6 +1606,132 @@ class GAllRelicQueryData_relics_planarSphereBuilder
                 r'GAllRelicQueryData_relics_planarSphere', 'concepts'),
             image: BuiltValueNullFieldError.checkNotNull(
                 image, r'GAllRelicQueryData_relics_planarSphere', 'image'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GAllRelicQueryData_relics_linkRope
+    extends GAllRelicQueryData_relics_linkRope {
+  @override
+  final String G__typename;
+  @override
+  final String concepts;
+  @override
+  final String image;
+
+  factory _$GAllRelicQueryData_relics_linkRope(
+          [void Function(GAllRelicQueryData_relics_linkRopeBuilder)?
+              updates]) =>
+      (new GAllRelicQueryData_relics_linkRopeBuilder()..update(updates))
+          ._build();
+
+  _$GAllRelicQueryData_relics_linkRope._(
+      {required this.G__typename, required this.concepts, required this.image})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GAllRelicQueryData_relics_linkRope', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        concepts, r'GAllRelicQueryData_relics_linkRope', 'concepts');
+    BuiltValueNullFieldError.checkNotNull(
+        image, r'GAllRelicQueryData_relics_linkRope', 'image');
+  }
+
+  @override
+  GAllRelicQueryData_relics_linkRope rebuild(
+          void Function(GAllRelicQueryData_relics_linkRopeBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GAllRelicQueryData_relics_linkRopeBuilder toBuilder() =>
+      new GAllRelicQueryData_relics_linkRopeBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GAllRelicQueryData_relics_linkRope &&
+        G__typename == other.G__typename &&
+        concepts == other.concepts &&
+        image == other.image;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, concepts.hashCode);
+    _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GAllRelicQueryData_relics_linkRope')
+          ..add('G__typename', G__typename)
+          ..add('concepts', concepts)
+          ..add('image', image))
+        .toString();
+  }
+}
+
+class GAllRelicQueryData_relics_linkRopeBuilder
+    implements
+        Builder<GAllRelicQueryData_relics_linkRope,
+            GAllRelicQueryData_relics_linkRopeBuilder> {
+  _$GAllRelicQueryData_relics_linkRope? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _concepts;
+  String? get concepts => _$this._concepts;
+  set concepts(String? concepts) => _$this._concepts = concepts;
+
+  String? _image;
+  String? get image => _$this._image;
+  set image(String? image) => _$this._image = image;
+
+  GAllRelicQueryData_relics_linkRopeBuilder() {
+    GAllRelicQueryData_relics_linkRope._initializeBuilder(this);
+  }
+
+  GAllRelicQueryData_relics_linkRopeBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _concepts = $v.concepts;
+      _image = $v.image;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GAllRelicQueryData_relics_linkRope other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GAllRelicQueryData_relics_linkRope;
+  }
+
+  @override
+  void update(
+      void Function(GAllRelicQueryData_relics_linkRopeBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GAllRelicQueryData_relics_linkRope build() => _build();
+
+  _$GAllRelicQueryData_relics_linkRope _build() {
+    final _$result = _$v ??
+        new _$GAllRelicQueryData_relics_linkRope._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(G__typename,
+                r'GAllRelicQueryData_relics_linkRope', 'G__typename'),
+            concepts: BuiltValueNullFieldError.checkNotNull(
+                concepts, r'GAllRelicQueryData_relics_linkRope', 'concepts'),
+            image: BuiltValueNullFieldError.checkNotNull(
+                image, r'GAllRelicQueryData_relics_linkRope', 'image'));
     replace(_$result);
     return _$result;
   }
