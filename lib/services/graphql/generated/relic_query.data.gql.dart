@@ -22,7 +22,7 @@ abstract class GRelicQueryData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GRelicQueryData_relic get relic;
+  GRelicQueryData_relic? get relic;
   static Serializer<GRelicQueryData> get serializer =>
       _$gRelicQueryDataSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -52,12 +52,13 @@ abstract class GRelicQueryData_relic
   String get concepts;
   String get image;
   _i2.GRelicType get type;
-  String get setEffect;
   GRelicQueryData_relic_head? get head;
   GRelicQueryData_relic_hands? get hands;
   GRelicQueryData_relic_body? get body;
   GRelicQueryData_relic_feet? get feet;
   GRelicQueryData_relic_planarSphere? get planarSphere;
+  GRelicQueryData_relic_linkRope? get linkRope;
+  String get setEffect;
   static Serializer<GRelicQueryData_relic> get serializer =>
       _$gRelicQueryDataRelicSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -86,6 +87,7 @@ abstract class GRelicQueryData_relic_head
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
   static Serializer<GRelicQueryData_relic_head> get serializer =>
       _$gRelicQueryDataRelicHeadSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -114,6 +116,7 @@ abstract class GRelicQueryData_relic_hands
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
   static Serializer<GRelicQueryData_relic_hands> get serializer =>
       _$gRelicQueryDataRelicHandsSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -142,6 +145,7 @@ abstract class GRelicQueryData_relic_body
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
   static Serializer<GRelicQueryData_relic_body> get serializer =>
       _$gRelicQueryDataRelicBodySerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -170,6 +174,7 @@ abstract class GRelicQueryData_relic_feet
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
   static Serializer<GRelicQueryData_relic_feet> get serializer =>
       _$gRelicQueryDataRelicFeetSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -199,6 +204,7 @@ abstract class GRelicQueryData_relic_planarSphere
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
   static Serializer<GRelicQueryData_relic_planarSphere> get serializer =>
       _$gRelicQueryDataRelicPlanarSphereSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -209,6 +215,36 @@ abstract class GRelicQueryData_relic_planarSphere
           Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(
         GRelicQueryData_relic_planarSphere.serializer,
+        json,
+      );
+}
+
+abstract class GRelicQueryData_relic_linkRope
+    implements
+        Built<GRelicQueryData_relic_linkRope,
+            GRelicQueryData_relic_linkRopeBuilder> {
+  GRelicQueryData_relic_linkRope._();
+
+  factory GRelicQueryData_relic_linkRope(
+          [Function(GRelicQueryData_relic_linkRopeBuilder b) updates]) =
+      _$GRelicQueryData_relic_linkRope;
+
+  static void _initializeBuilder(GRelicQueryData_relic_linkRopeBuilder b) =>
+      b..G__typename = 'RelicSet';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get concepts;
+  String get image;
+  String get description;
+  static Serializer<GRelicQueryData_relic_linkRope> get serializer =>
+      _$gRelicQueryDataRelicLinkRopeSerializer;
+  Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
+        GRelicQueryData_relic_linkRope.serializer,
+        this,
+      ) as Map<String, dynamic>);
+  static GRelicQueryData_relic_linkRope? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(
+        GRelicQueryData_relic_linkRope.serializer,
         json,
       );
 }

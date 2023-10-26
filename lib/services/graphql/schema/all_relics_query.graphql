@@ -4,30 +4,42 @@ query AllRelicQuery {
     concepts
     image
     type
-    setEffect
     head {
       concepts
       image
+      description
+      story
     }
     hands {
       concepts
       image
+      description
+      story
     }
     body {
       concepts
       image
+      description
+      story
     }
     feet {
       concepts
       image
+      description
+      story
     }
     planarSphere {
       concepts
       image
+      description
+      story
     }
     linkRope {
       concepts
       image
+      description
+      story
     }
+    setEffect
   }
 }

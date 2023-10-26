@@ -5,7 +5,8 @@ import 'package:stellerlink/features/character_info/screens/character_info.dart'
 import 'package:stellerlink/features/characters/screens/character_page.dart';
 import 'package:stellerlink/features/dashboard/screens/dashboard_page.dart';
 import 'package:stellerlink/features/home/home_screen.dart';
-import 'package:stellerlink/features/light_cornes/screens/lightcones_page.dart';
+import 'package:stellerlink/features/lightcornes/screens/lightcone_detail_screen.dart';
+import 'package:stellerlink/features/lightcornes/screens/lightcones_page.dart';
 import 'package:stellerlink/features/relics/screens/relic_info.dart';
 import 'package:stellerlink/features/relics/screens/relics_page.dart';
 import 'package:stellerlink/features/splash/splash_screen.dart';
@@ -63,6 +64,19 @@ class LightConePageRoute extends GoRouteData {
       const LightConesPage();
 }
 
+@TypedGoRoute<LightConeDetailScreenRoute>(path: '/lightcone/:id/:title')
+class LightConeDetailScreenRoute extends GoRouteData {
+  const LightConeDetailScreenRoute(
+      {required this.title, required this.$extra, required this.id});
+  final int id;
+  final String title;
+  final dynamic $extra;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      LightConeDetailScreen(lightCone: $extra);
+}
+
 class DashboardPageRoute extends GoRouteData {
   const DashboardPageRoute();
 
@@ -110,7 +124,7 @@ class RelicInfoScreenRoute extends GoRouteData {
       {required this.title, required this.$extra, required this.id});
   final int id;
   final String title;
-  final GAllRelicQueryData_relics $extra;
+  final dynamic $extra;
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>

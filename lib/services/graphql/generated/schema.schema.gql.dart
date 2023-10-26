@@ -189,6 +189,26 @@ class GRelicType extends EnumClass {
   static GRelicType valueOf(String name) => _$gRelicTypeValueOf(name);
 }
 
+class GSetType extends EnumClass {
+  const GSetType._(String name) : super(name);
+
+  static const GSetType head = _$gSetTypehead;
+
+  static const GSetType heads = _$gSetTypeheads;
+
+  static const GSetType body = _$gSetTypebody;
+
+  static const GSetType feet = _$gSetTypefeet;
+
+  static const GSetType planarSphere = _$gSetTypeplanarSphere;
+
+  static const GSetType linkRope = _$gSetTypelinkRope;
+
+  static Serializer<GSetType> get serializer => _$gSetTypeSerializer;
+  static BuiltSet<GSetType> get values => _$gSetTypeValues;
+  static GSetType valueOf(String name) => _$gSetTypeValueOf(name);
+}
+
 abstract class GStatItemInput
     implements Built<GStatItemInput, GStatItemInputBuilder> {
   GStatItemInput._();

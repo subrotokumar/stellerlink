@@ -24,7 +24,7 @@ abstract class GGetCharacterByIdData
       b..G__typename = 'Query';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  GGetCharacterByIdData_character get character;
+  GGetCharacterByIdData_character? get character;
   static Serializer<GGetCharacterByIdData> get serializer =>
       _$gGetCharacterByIdDataSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

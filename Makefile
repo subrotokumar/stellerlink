@@ -1,5 +1,5 @@
 fetch:
-	get-graphql-schema https://cultures-adidas-pressed-cameron.trycloudflare.com/graphql > lib/services/graphql/schema/schema.graphql
+	get-graphql-schema https://stellerlink-backend.onrender.com/graphql > lib/services/graphql/schema/schema.graphql
 	
 generate:
 	make clean
@@ -13,3 +13,7 @@ clean:
 
 icons:
 	dart run flutter_launcher_icons
+
+watch:
+	make clean
+	dart run build_runner watch --delete-conflicting-outputs

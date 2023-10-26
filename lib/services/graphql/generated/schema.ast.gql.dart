@@ -48,6 +48,79 @@ const specifiedBy = _i1.DirectiveDefinitionNode(
   locations: [_i1.DirectiveLocation.scalar],
   repeatable: false,
 );
+const AscensionMaterial = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'AscensionMaterial'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'id'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Int'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'concepts'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'rarity'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Int'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'type'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'String'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'description'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'story'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'icon'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
 const AscensionMaterials = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'AscensionMaterials'),
   directives: [],
@@ -94,6 +167,31 @@ const AscensionMaterialsInput = _i1.InputObjectTypeDefinitionNode(
         isNonNull: true,
       ),
       defaultValue: null,
+    ),
+  ],
+);
+const AscensionMaterialWithQuantity = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'AscensionMaterialWithQuantity'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'material'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'AscensionMaterial'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'quantity'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
     ),
   ],
 );
@@ -506,6 +604,115 @@ const Images = _i1.ObjectTypeDefinitionNode(
     ),
   ],
 );
+const LightCone = _i1.ObjectTypeDefinitionNode(
+  name: _i1.NameNode(value: 'LightCone'),
+  directives: [],
+  interfaces: [],
+  fields: [
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'id'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Int'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'concepts'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'rarity'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Int'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'path'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'Path'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'description'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'skill_name'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'skill'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'story'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'ascensionMaterials'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'AscensionMaterialWithQuantity'),
+          isNonNull: false,
+        ),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'icon'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'largeIcon'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+  ],
+);
 const Material = _i1.ObjectTypeDefinitionNode(
   name: _i1.NameNode(value: 'Material'),
   directives: [],
@@ -705,7 +912,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Character'),
-        isNonNull: true,
+        isNonNull: false,
       ),
     ),
     _i1.FieldDefinitionNode(
@@ -736,7 +943,7 @@ const Query = _i1.ObjectTypeDefinitionNode(
       ],
       type: _i1.NamedTypeNode(
         name: _i1.NameNode(value: 'Relic'),
-        isNonNull: true,
+        isNonNull: false,
       ),
     ),
     _i1.FieldDefinitionNode(
@@ -746,6 +953,37 @@ const Query = _i1.ObjectTypeDefinitionNode(
       type: _i1.ListTypeNode(
         type: _i1.NamedTypeNode(
           name: _i1.NameNode(value: 'Relic'),
+          isNonNull: true,
+        ),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'lightCone'),
+      directives: [],
+      args: [
+        _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+            name: _i1.NameNode(value: 'Int'),
+            isNonNull: true,
+          ),
+          defaultValue: null,
+        )
+      ],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'LightCone'),
+        isNonNull: false,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'lightCones'),
+      directives: [],
+      args: [],
+      type: _i1.ListTypeNode(
+        type: _i1.NamedTypeNode(
+          name: _i1.NameNode(value: 'LightCone'),
           isNonNull: true,
         ),
         isNonNull: true,
@@ -882,6 +1120,33 @@ const RelicSet = _i1.ObjectTypeDefinitionNode(
         isNonNull: true,
       ),
     ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'type'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'SetType'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'description'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
+    _i1.FieldDefinitionNode(
+      name: _i1.NameNode(value: 'story'),
+      directives: [],
+      args: [],
+      type: _i1.NamedTypeNode(
+        name: _i1.NameNode(value: 'String'),
+        isNonNull: true,
+      ),
+    ),
   ],
 );
 const RelicType = _i1.EnumTypeDefinitionNode(
@@ -894,6 +1159,36 @@ const RelicType = _i1.EnumTypeDefinitionNode(
     ),
     _i1.EnumValueDefinitionNode(
       name: _i1.NameNode(value: 'PlanarOrnaments'),
+      directives: [],
+    ),
+  ],
+);
+const SetType = _i1.EnumTypeDefinitionNode(
+  name: _i1.NameNode(value: 'SetType'),
+  directives: [],
+  values: [
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'head'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'heads'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'body'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'feet'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'planarSphere'),
+      directives: [],
+    ),
+    _i1.EnumValueDefinitionNode(
+      name: _i1.NameNode(value: 'linkRope'),
       directives: [],
     ),
   ],
@@ -1100,8 +1395,10 @@ const StatItemInput = _i1.InputObjectTypeDefinitionNode(
 const document = _i1.DocumentNode(definitions: [
   defer,
   specifiedBy,
+  AscensionMaterial,
   AscensionMaterials,
   AscensionMaterialsInput,
+  AscensionMaterialWithQuantity,
   Character,
   CharacterInput,
   CombatType,
@@ -1109,6 +1406,7 @@ const document = _i1.DocumentNode(definitions: [
   EidolonInput,
   ImageInput,
   Images,
+  LightCone,
   Material,
   MaterialInput,
   Mutation,
@@ -1117,6 +1415,7 @@ const document = _i1.DocumentNode(definitions: [
   Relic,
   RelicSet,
   RelicType,
+  SetType,
   StatItem,
   StatItemInput,
 ]);

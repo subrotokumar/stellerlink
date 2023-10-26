@@ -15,6 +15,16 @@ custom scalar types.
 """
 directive @specifiedBy(url: String!) on SCALAR
 
+type AscensionMaterial {
+  id: Int!
+  concepts: String!
+  rarity: Int!
+  type: [String!]!
+  description: String!
+  story: String!
+  icon: String!
+}
+
 type AscensionMaterials {
   quantity: Int!
   material: Material!
@@ -23,6 +33,11 @@ type AscensionMaterials {
 input AscensionMaterialsInput {
   quantity: Int!
   material: MaterialInput!
+}
+
+type AscensionMaterialWithQuantity {
+  material: AscensionMaterial!
+  quantity: String!
 }
 
 """Character Data"""
@@ -53,7 +68,7 @@ input CharacterInput {
   eidolons: [EidolonInput]!
 }
 
-"""Combat Types"""
+"""An enum representing different combat types."""
 enum CombatType {
   Physical
   Fire
@@ -92,6 +107,21 @@ type Images {
   transparent: String
 }
 
+"""LightCones"""
+type LightCone {
+  id: Int!
+  concepts: String!
+  rarity: Int!
+  path: Path!
+  description: String!
+  skill_name: String!
+  skill: String!
+  story: String!
+  ascensionMaterials: [AscensionMaterialWithQuantity]!
+  icon: String!
+  largeIcon: String!
+}
+
 type Material {
   name: String!
   rarity: Int!
@@ -108,13 +138,16 @@ input MaterialInput {
   story: String!
 }
 
-"""Mutation"""
+"""Mutation type represents operations for modifying data."""
 type Mutation {
+  """A simple mutation that returns a greeting."""
   hello: String!
+
+  """Add a new character with the provided input data."""
   addCharacter(input: CharacterInput): Character!
 }
 
-"""Path"""
+"""An enum representing different paths."""
 enum Path {
   Destruction
   Hunt
@@ -125,12 +158,25 @@ enum Path {
   Abundance
 }
 
-"""Query"""
+"""Query type represents operations for retrieving data."""
 type Query {
-  character(id: Int!): Character!
+  """Get information about a character by their ID."""
+  character(id: Int!): Character
+
+  """Get a list of all characters."""
   characters: [Character!]!
-  relic(id: Int!): Relic!
+
+  """Get information about a relic by its ID."""
+  relic(id: Int!): Relic
+
+  """Get a list of all relics."""
   relics: [Relic!]!
+
+  """Get information about a light cone by its ID."""
+  lightCone(id: Int!): LightCone
+
+  """Get a list of all light cones."""
+  lightCones: [LightCone!]!
 }
 
 """Relics"""
@@ -151,11 +197,25 @@ type Relic {
 type RelicSet {
   concepts: String!
   image: String!
+  type: SetType!
+  description: String!
+  story: String!
 }
 
+"""An enum representing different relic types."""
 enum RelicType {
   CavernRelics
   PlanarOrnaments
+}
+
+"""An enum representing different set types."""
+enum SetType {
+  head
+  heads
+  body
+  feet
+  planarSphere
+  linkRope
 }
 
 type StatItem {

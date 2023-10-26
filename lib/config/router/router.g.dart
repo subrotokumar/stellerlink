@@ -8,6 +8,7 @@ part of 'router.dart';
 
 List<RouteBase> get $appRoutes => [
       $homeScreenShellRoute,
+      $lightConeDetailScreenRoute,
       $splashScreenRoute,
       $characterInfoScreenRoute,
       $relicInfoScreenRoute,
@@ -143,6 +144,35 @@ extension $WebviewScreenRouteExtension on WebviewScreenRoute {
       context.replace(location, extra: $extra);
 }
 
+RouteBase get $lightConeDetailScreenRoute => GoRouteData.$route(
+      path: '/lightcone/:id/:title',
+      factory: $LightConeDetailScreenRouteExtension._fromState,
+    );
+
+extension $LightConeDetailScreenRouteExtension on LightConeDetailScreenRoute {
+  static LightConeDetailScreenRoute _fromState(GoRouterState state) =>
+      LightConeDetailScreenRoute(
+        title: state.pathParameters['title']!,
+        id: int.parse(state.pathParameters['id']!),
+        $extra: state.extra as dynamic,
+      );
+
+  String get location => GoRouteData.$location(
+        '/lightcone/${Uri.encodeComponent(id.toString())}/${Uri.encodeComponent(title)}',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: $extra);
+
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: $extra);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location, extra: $extra);
+
+  void replace(BuildContext context) =>
+      context.replace(location, extra: $extra);
+}
+
 RouteBase get $splashScreenRoute => GoRouteData.$route(
       path: '/splash',
       name: 'splash',
@@ -202,7 +232,7 @@ extension $RelicInfoScreenRouteExtension on RelicInfoScreenRoute {
       RelicInfoScreenRoute(
         title: state.pathParameters['title']!,
         id: int.parse(state.pathParameters['id']!),
-        $extra: state.extra as GAllRelicQueryData_relics,
+        $extra: state.extra as dynamic,
       );
 
   String get location => GoRouteData.$location(

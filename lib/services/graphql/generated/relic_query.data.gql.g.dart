@@ -21,6 +21,9 @@ Serializer<GRelicQueryData_relic_feet> _$gRelicQueryDataRelicFeetSerializer =
 Serializer<GRelicQueryData_relic_planarSphere>
     _$gRelicQueryDataRelicPlanarSphereSerializer =
     new _$GRelicQueryData_relic_planarSphereSerializer();
+Serializer<GRelicQueryData_relic_linkRope>
+    _$gRelicQueryDataRelicLinkRopeSerializer =
+    new _$GRelicQueryData_relic_linkRopeSerializer();
 
 class _$GRelicQueryDataSerializer
     implements StructuredSerializer<GRelicQueryData> {
@@ -36,11 +39,15 @@ class _$GRelicQueryDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'relic',
-      serializers.serialize(object.relic,
-          specifiedType: const FullType(GRelicQueryData_relic)),
     ];
-
+    Object? value;
+    value = object.relic;
+    if (value != null) {
+      result
+        ..add('relic')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GRelicQueryData_relic)));
+    }
     return result;
   }
 
@@ -141,6 +148,13 @@ class _$GRelicQueryData_relicSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(GRelicQueryData_relic_planarSphere)));
     }
+    value = object.linkRope;
+    if (value != null) {
+      result
+        ..add('linkRope')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GRelicQueryData_relic_linkRope)));
+    }
     return result;
   }
 
@@ -176,10 +190,6 @@ class _$GRelicQueryData_relicSerializer
           result.type = serializers.deserialize(value,
               specifiedType: const FullType(_i2.GRelicType))! as _i2.GRelicType;
           break;
-        case 'setEffect':
-          result.setEffect = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
-          break;
         case 'head':
           result.head.replace(serializers.deserialize(value,
                   specifiedType: const FullType(GRelicQueryData_relic_head))!
@@ -205,6 +215,16 @@ class _$GRelicQueryData_relicSerializer
                   specifiedType:
                       const FullType(GRelicQueryData_relic_planarSphere))!
               as GRelicQueryData_relic_planarSphere);
+          break;
+        case 'linkRope':
+          result.linkRope.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(GRelicQueryData_relic_linkRope))!
+              as GRelicQueryData_relic_linkRope);
+          break;
+        case 'setEffect':
+          result.setEffect = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
           break;
       }
     }
@@ -237,6 +257,9 @@ class _$GRelicQueryData_relic_headSerializer
       'image',
       serializers.serialize(object.image,
           specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -264,6 +287,10 @@ class _$GRelicQueryData_relic_headSerializer
           break;
         case 'image':
           result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -297,6 +324,9 @@ class _$GRelicQueryData_relic_handsSerializer
       'image',
       serializers.serialize(object.image,
           specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -324,6 +354,10 @@ class _$GRelicQueryData_relic_handsSerializer
           break;
         case 'image':
           result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -357,6 +391,9 @@ class _$GRelicQueryData_relic_bodySerializer
       'image',
       serializers.serialize(object.image,
           specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -384,6 +421,10 @@ class _$GRelicQueryData_relic_bodySerializer
           break;
         case 'image':
           result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -417,6 +458,9 @@ class _$GRelicQueryData_relic_feetSerializer
       'image',
       serializers.serialize(object.image,
           specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -444,6 +488,10 @@ class _$GRelicQueryData_relic_feetSerializer
           break;
         case 'image':
           result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
       }
@@ -477,6 +525,9 @@ class _$GRelicQueryData_relic_planarSphereSerializer
       'image',
       serializers.serialize(object.image,
           specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -506,6 +557,77 @@ class _$GRelicQueryData_relic_planarSphereSerializer
           result.image = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GRelicQueryData_relic_linkRopeSerializer
+    implements StructuredSerializer<GRelicQueryData_relic_linkRope> {
+  @override
+  final Iterable<Type> types = const [
+    GRelicQueryData_relic_linkRope,
+    _$GRelicQueryData_relic_linkRope
+  ];
+  @override
+  final String wireName = 'GRelicQueryData_relic_linkRope';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GRelicQueryData_relic_linkRope object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'concepts',
+      serializers.serialize(object.concepts,
+          specifiedType: const FullType(String)),
+      'image',
+      serializers.serialize(object.image,
+          specifiedType: const FullType(String)),
+      'description',
+      serializers.serialize(object.description,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GRelicQueryData_relic_linkRope deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GRelicQueryData_relic_linkRopeBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current! as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'concepts':
+          result.concepts = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'image':
+          result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String))! as String;
+          break;
       }
     }
 
@@ -517,16 +639,14 @@ class _$GRelicQueryData extends GRelicQueryData {
   @override
   final String G__typename;
   @override
-  final GRelicQueryData_relic relic;
+  final GRelicQueryData_relic? relic;
 
   factory _$GRelicQueryData([void Function(GRelicQueryDataBuilder)? updates]) =>
       (new GRelicQueryDataBuilder()..update(updates))._build();
 
-  _$GRelicQueryData._({required this.G__typename, required this.relic})
-      : super._() {
+  _$GRelicQueryData._({required this.G__typename, this.relic}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GRelicQueryData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(relic, r'GRelicQueryData', 'relic');
   }
 
   @override
@@ -584,7 +704,7 @@ class GRelicQueryDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _relic = $v.relic.toBuilder();
+      _relic = $v.relic?.toBuilder();
       _$v = null;
     }
     return this;
@@ -611,12 +731,12 @@ class GRelicQueryDataBuilder
           new _$GRelicQueryData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GRelicQueryData', 'G__typename'),
-              relic: relic.build());
+              relic: _relic?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'relic';
-        relic.build();
+        _relic?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GRelicQueryData', _$failedField, e.toString());
@@ -640,8 +760,6 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
   @override
   final _i2.GRelicType type;
   @override
-  final String setEffect;
-  @override
   final GRelicQueryData_relic_head? head;
   @override
   final GRelicQueryData_relic_hands? hands;
@@ -651,6 +769,10 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
   final GRelicQueryData_relic_feet? feet;
   @override
   final GRelicQueryData_relic_planarSphere? planarSphere;
+  @override
+  final GRelicQueryData_relic_linkRope? linkRope;
+  @override
+  final String setEffect;
 
   factory _$GRelicQueryData_relic(
           [void Function(GRelicQueryData_relicBuilder)? updates]) =>
@@ -662,12 +784,13 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
       required this.concepts,
       required this.image,
       required this.type,
-      required this.setEffect,
       this.head,
       this.hands,
       this.body,
       this.feet,
-      this.planarSphere})
+      this.planarSphere,
+      this.linkRope,
+      required this.setEffect})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GRelicQueryData_relic', 'G__typename');
@@ -700,12 +823,13 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
         concepts == other.concepts &&
         image == other.image &&
         type == other.type &&
-        setEffect == other.setEffect &&
         head == other.head &&
         hands == other.hands &&
         body == other.body &&
         feet == other.feet &&
-        planarSphere == other.planarSphere;
+        planarSphere == other.planarSphere &&
+        linkRope == other.linkRope &&
+        setEffect == other.setEffect;
   }
 
   @override
@@ -716,12 +840,13 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
-    _$hash = $jc(_$hash, setEffect.hashCode);
     _$hash = $jc(_$hash, head.hashCode);
     _$hash = $jc(_$hash, hands.hashCode);
     _$hash = $jc(_$hash, body.hashCode);
     _$hash = $jc(_$hash, feet.hashCode);
     _$hash = $jc(_$hash, planarSphere.hashCode);
+    _$hash = $jc(_$hash, linkRope.hashCode);
+    _$hash = $jc(_$hash, setEffect.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -734,12 +859,13 @@ class _$GRelicQueryData_relic extends GRelicQueryData_relic {
           ..add('concepts', concepts)
           ..add('image', image)
           ..add('type', type)
-          ..add('setEffect', setEffect)
           ..add('head', head)
           ..add('hands', hands)
           ..add('body', body)
           ..add('feet', feet)
-          ..add('planarSphere', planarSphere))
+          ..add('planarSphere', planarSphere)
+          ..add('linkRope', linkRope)
+          ..add('setEffect', setEffect))
         .toString();
   }
 }
@@ -768,10 +894,6 @@ class GRelicQueryData_relicBuilder
   _i2.GRelicType? get type => _$this._type;
   set type(_i2.GRelicType? type) => _$this._type = type;
 
-  String? _setEffect;
-  String? get setEffect => _$this._setEffect;
-  set setEffect(String? setEffect) => _$this._setEffect = setEffect;
-
   GRelicQueryData_relic_headBuilder? _head;
   GRelicQueryData_relic_headBuilder get head =>
       _$this._head ??= new GRelicQueryData_relic_headBuilder();
@@ -798,6 +920,16 @@ class GRelicQueryData_relicBuilder
   set planarSphere(GRelicQueryData_relic_planarSphereBuilder? planarSphere) =>
       _$this._planarSphere = planarSphere;
 
+  GRelicQueryData_relic_linkRopeBuilder? _linkRope;
+  GRelicQueryData_relic_linkRopeBuilder get linkRope =>
+      _$this._linkRope ??= new GRelicQueryData_relic_linkRopeBuilder();
+  set linkRope(GRelicQueryData_relic_linkRopeBuilder? linkRope) =>
+      _$this._linkRope = linkRope;
+
+  String? _setEffect;
+  String? get setEffect => _$this._setEffect;
+  set setEffect(String? setEffect) => _$this._setEffect = setEffect;
+
   GRelicQueryData_relicBuilder() {
     GRelicQueryData_relic._initializeBuilder(this);
   }
@@ -810,12 +942,13 @@ class GRelicQueryData_relicBuilder
       _concepts = $v.concepts;
       _image = $v.image;
       _type = $v.type;
-      _setEffect = $v.setEffect;
       _head = $v.head?.toBuilder();
       _hands = $v.hands?.toBuilder();
       _body = $v.body?.toBuilder();
       _feet = $v.feet?.toBuilder();
       _planarSphere = $v.planarSphere?.toBuilder();
+      _linkRope = $v.linkRope?.toBuilder();
+      _setEffect = $v.setEffect;
       _$v = null;
     }
     return this;
@@ -850,13 +983,14 @@ class GRelicQueryData_relicBuilder
                   image, r'GRelicQueryData_relic', 'image'),
               type: BuiltValueNullFieldError.checkNotNull(
                   type, r'GRelicQueryData_relic', 'type'),
-              setEffect: BuiltValueNullFieldError.checkNotNull(
-                  setEffect, r'GRelicQueryData_relic', 'setEffect'),
               head: _head?.build(),
               hands: _hands?.build(),
               body: _body?.build(),
               feet: _feet?.build(),
-              planarSphere: _planarSphere?.build());
+              planarSphere: _planarSphere?.build(),
+              linkRope: _linkRope?.build(),
+              setEffect: BuiltValueNullFieldError.checkNotNull(
+                  setEffect, r'GRelicQueryData_relic', 'setEffect'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -870,6 +1004,8 @@ class GRelicQueryData_relicBuilder
         _feet?.build();
         _$failedField = 'planarSphere';
         _planarSphere?.build();
+        _$failedField = 'linkRope';
+        _linkRope?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GRelicQueryData_relic', _$failedField, e.toString());
@@ -888,13 +1024,18 @@ class _$GRelicQueryData_relic_head extends GRelicQueryData_relic_head {
   final String concepts;
   @override
   final String image;
+  @override
+  final String description;
 
   factory _$GRelicQueryData_relic_head(
           [void Function(GRelicQueryData_relic_headBuilder)? updates]) =>
       (new GRelicQueryData_relic_headBuilder()..update(updates))._build();
 
   _$GRelicQueryData_relic_head._(
-      {required this.G__typename, required this.concepts, required this.image})
+      {required this.G__typename,
+      required this.concepts,
+      required this.image,
+      required this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GRelicQueryData_relic_head', 'G__typename');
@@ -902,6 +1043,8 @@ class _$GRelicQueryData_relic_head extends GRelicQueryData_relic_head {
         concepts, r'GRelicQueryData_relic_head', 'concepts');
     BuiltValueNullFieldError.checkNotNull(
         image, r'GRelicQueryData_relic_head', 'image');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'GRelicQueryData_relic_head', 'description');
   }
 
   @override
@@ -919,7 +1062,8 @@ class _$GRelicQueryData_relic_head extends GRelicQueryData_relic_head {
     return other is GRelicQueryData_relic_head &&
         G__typename == other.G__typename &&
         concepts == other.concepts &&
-        image == other.image;
+        image == other.image &&
+        description == other.description;
   }
 
   @override
@@ -928,6 +1072,7 @@ class _$GRelicQueryData_relic_head extends GRelicQueryData_relic_head {
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -937,7 +1082,8 @@ class _$GRelicQueryData_relic_head extends GRelicQueryData_relic_head {
     return (newBuiltValueToStringHelper(r'GRelicQueryData_relic_head')
           ..add('G__typename', G__typename)
           ..add('concepts', concepts)
-          ..add('image', image))
+          ..add('image', image)
+          ..add('description', description))
         .toString();
   }
 }
@@ -959,6 +1105,10 @@ class GRelicQueryData_relic_headBuilder
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   GRelicQueryData_relic_headBuilder() {
     GRelicQueryData_relic_head._initializeBuilder(this);
   }
@@ -969,6 +1119,7 @@ class GRelicQueryData_relic_headBuilder
       _G__typename = $v.G__typename;
       _concepts = $v.concepts;
       _image = $v.image;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -996,7 +1147,9 @@ class GRelicQueryData_relic_headBuilder
             concepts: BuiltValueNullFieldError.checkNotNull(
                 concepts, r'GRelicQueryData_relic_head', 'concepts'),
             image: BuiltValueNullFieldError.checkNotNull(
-                image, r'GRelicQueryData_relic_head', 'image'));
+                image, r'GRelicQueryData_relic_head', 'image'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'GRelicQueryData_relic_head', 'description'));
     replace(_$result);
     return _$result;
   }
@@ -1009,13 +1162,18 @@ class _$GRelicQueryData_relic_hands extends GRelicQueryData_relic_hands {
   final String concepts;
   @override
   final String image;
+  @override
+  final String description;
 
   factory _$GRelicQueryData_relic_hands(
           [void Function(GRelicQueryData_relic_handsBuilder)? updates]) =>
       (new GRelicQueryData_relic_handsBuilder()..update(updates))._build();
 
   _$GRelicQueryData_relic_hands._(
-      {required this.G__typename, required this.concepts, required this.image})
+      {required this.G__typename,
+      required this.concepts,
+      required this.image,
+      required this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GRelicQueryData_relic_hands', 'G__typename');
@@ -1023,6 +1181,8 @@ class _$GRelicQueryData_relic_hands extends GRelicQueryData_relic_hands {
         concepts, r'GRelicQueryData_relic_hands', 'concepts');
     BuiltValueNullFieldError.checkNotNull(
         image, r'GRelicQueryData_relic_hands', 'image');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'GRelicQueryData_relic_hands', 'description');
   }
 
   @override
@@ -1040,7 +1200,8 @@ class _$GRelicQueryData_relic_hands extends GRelicQueryData_relic_hands {
     return other is GRelicQueryData_relic_hands &&
         G__typename == other.G__typename &&
         concepts == other.concepts &&
-        image == other.image;
+        image == other.image &&
+        description == other.description;
   }
 
   @override
@@ -1049,6 +1210,7 @@ class _$GRelicQueryData_relic_hands extends GRelicQueryData_relic_hands {
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1058,7 +1220,8 @@ class _$GRelicQueryData_relic_hands extends GRelicQueryData_relic_hands {
     return (newBuiltValueToStringHelper(r'GRelicQueryData_relic_hands')
           ..add('G__typename', G__typename)
           ..add('concepts', concepts)
-          ..add('image', image))
+          ..add('image', image)
+          ..add('description', description))
         .toString();
   }
 }
@@ -1081,6 +1244,10 @@ class GRelicQueryData_relic_handsBuilder
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   GRelicQueryData_relic_handsBuilder() {
     GRelicQueryData_relic_hands._initializeBuilder(this);
   }
@@ -1091,6 +1258,7 @@ class GRelicQueryData_relic_handsBuilder
       _G__typename = $v.G__typename;
       _concepts = $v.concepts;
       _image = $v.image;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -1118,7 +1286,9 @@ class GRelicQueryData_relic_handsBuilder
             concepts: BuiltValueNullFieldError.checkNotNull(
                 concepts, r'GRelicQueryData_relic_hands', 'concepts'),
             image: BuiltValueNullFieldError.checkNotNull(
-                image, r'GRelicQueryData_relic_hands', 'image'));
+                image, r'GRelicQueryData_relic_hands', 'image'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'GRelicQueryData_relic_hands', 'description'));
     replace(_$result);
     return _$result;
   }
@@ -1131,13 +1301,18 @@ class _$GRelicQueryData_relic_body extends GRelicQueryData_relic_body {
   final String concepts;
   @override
   final String image;
+  @override
+  final String description;
 
   factory _$GRelicQueryData_relic_body(
           [void Function(GRelicQueryData_relic_bodyBuilder)? updates]) =>
       (new GRelicQueryData_relic_bodyBuilder()..update(updates))._build();
 
   _$GRelicQueryData_relic_body._(
-      {required this.G__typename, required this.concepts, required this.image})
+      {required this.G__typename,
+      required this.concepts,
+      required this.image,
+      required this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GRelicQueryData_relic_body', 'G__typename');
@@ -1145,6 +1320,8 @@ class _$GRelicQueryData_relic_body extends GRelicQueryData_relic_body {
         concepts, r'GRelicQueryData_relic_body', 'concepts');
     BuiltValueNullFieldError.checkNotNull(
         image, r'GRelicQueryData_relic_body', 'image');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'GRelicQueryData_relic_body', 'description');
   }
 
   @override
@@ -1162,7 +1339,8 @@ class _$GRelicQueryData_relic_body extends GRelicQueryData_relic_body {
     return other is GRelicQueryData_relic_body &&
         G__typename == other.G__typename &&
         concepts == other.concepts &&
-        image == other.image;
+        image == other.image &&
+        description == other.description;
   }
 
   @override
@@ -1171,6 +1349,7 @@ class _$GRelicQueryData_relic_body extends GRelicQueryData_relic_body {
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1180,7 +1359,8 @@ class _$GRelicQueryData_relic_body extends GRelicQueryData_relic_body {
     return (newBuiltValueToStringHelper(r'GRelicQueryData_relic_body')
           ..add('G__typename', G__typename)
           ..add('concepts', concepts)
-          ..add('image', image))
+          ..add('image', image)
+          ..add('description', description))
         .toString();
   }
 }
@@ -1202,6 +1382,10 @@ class GRelicQueryData_relic_bodyBuilder
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   GRelicQueryData_relic_bodyBuilder() {
     GRelicQueryData_relic_body._initializeBuilder(this);
   }
@@ -1212,6 +1396,7 @@ class GRelicQueryData_relic_bodyBuilder
       _G__typename = $v.G__typename;
       _concepts = $v.concepts;
       _image = $v.image;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -1239,7 +1424,9 @@ class GRelicQueryData_relic_bodyBuilder
             concepts: BuiltValueNullFieldError.checkNotNull(
                 concepts, r'GRelicQueryData_relic_body', 'concepts'),
             image: BuiltValueNullFieldError.checkNotNull(
-                image, r'GRelicQueryData_relic_body', 'image'));
+                image, r'GRelicQueryData_relic_body', 'image'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'GRelicQueryData_relic_body', 'description'));
     replace(_$result);
     return _$result;
   }
@@ -1252,13 +1439,18 @@ class _$GRelicQueryData_relic_feet extends GRelicQueryData_relic_feet {
   final String concepts;
   @override
   final String image;
+  @override
+  final String description;
 
   factory _$GRelicQueryData_relic_feet(
           [void Function(GRelicQueryData_relic_feetBuilder)? updates]) =>
       (new GRelicQueryData_relic_feetBuilder()..update(updates))._build();
 
   _$GRelicQueryData_relic_feet._(
-      {required this.G__typename, required this.concepts, required this.image})
+      {required this.G__typename,
+      required this.concepts,
+      required this.image,
+      required this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GRelicQueryData_relic_feet', 'G__typename');
@@ -1266,6 +1458,8 @@ class _$GRelicQueryData_relic_feet extends GRelicQueryData_relic_feet {
         concepts, r'GRelicQueryData_relic_feet', 'concepts');
     BuiltValueNullFieldError.checkNotNull(
         image, r'GRelicQueryData_relic_feet', 'image');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'GRelicQueryData_relic_feet', 'description');
   }
 
   @override
@@ -1283,7 +1477,8 @@ class _$GRelicQueryData_relic_feet extends GRelicQueryData_relic_feet {
     return other is GRelicQueryData_relic_feet &&
         G__typename == other.G__typename &&
         concepts == other.concepts &&
-        image == other.image;
+        image == other.image &&
+        description == other.description;
   }
 
   @override
@@ -1292,6 +1487,7 @@ class _$GRelicQueryData_relic_feet extends GRelicQueryData_relic_feet {
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1301,7 +1497,8 @@ class _$GRelicQueryData_relic_feet extends GRelicQueryData_relic_feet {
     return (newBuiltValueToStringHelper(r'GRelicQueryData_relic_feet')
           ..add('G__typename', G__typename)
           ..add('concepts', concepts)
-          ..add('image', image))
+          ..add('image', image)
+          ..add('description', description))
         .toString();
   }
 }
@@ -1323,6 +1520,10 @@ class GRelicQueryData_relic_feetBuilder
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   GRelicQueryData_relic_feetBuilder() {
     GRelicQueryData_relic_feet._initializeBuilder(this);
   }
@@ -1333,6 +1534,7 @@ class GRelicQueryData_relic_feetBuilder
       _G__typename = $v.G__typename;
       _concepts = $v.concepts;
       _image = $v.image;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -1360,7 +1562,9 @@ class GRelicQueryData_relic_feetBuilder
             concepts: BuiltValueNullFieldError.checkNotNull(
                 concepts, r'GRelicQueryData_relic_feet', 'concepts'),
             image: BuiltValueNullFieldError.checkNotNull(
-                image, r'GRelicQueryData_relic_feet', 'image'));
+                image, r'GRelicQueryData_relic_feet', 'image'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'GRelicQueryData_relic_feet', 'description'));
     replace(_$result);
     return _$result;
   }
@@ -1374,6 +1578,8 @@ class _$GRelicQueryData_relic_planarSphere
   final String concepts;
   @override
   final String image;
+  @override
+  final String description;
 
   factory _$GRelicQueryData_relic_planarSphere(
           [void Function(GRelicQueryData_relic_planarSphereBuilder)?
@@ -1382,7 +1588,10 @@ class _$GRelicQueryData_relic_planarSphere
           ._build();
 
   _$GRelicQueryData_relic_planarSphere._(
-      {required this.G__typename, required this.concepts, required this.image})
+      {required this.G__typename,
+      required this.concepts,
+      required this.image,
+      required this.description})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GRelicQueryData_relic_planarSphere', 'G__typename');
@@ -1390,6 +1599,8 @@ class _$GRelicQueryData_relic_planarSphere
         concepts, r'GRelicQueryData_relic_planarSphere', 'concepts');
     BuiltValueNullFieldError.checkNotNull(
         image, r'GRelicQueryData_relic_planarSphere', 'image');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'GRelicQueryData_relic_planarSphere', 'description');
   }
 
   @override
@@ -1407,7 +1618,8 @@ class _$GRelicQueryData_relic_planarSphere
     return other is GRelicQueryData_relic_planarSphere &&
         G__typename == other.G__typename &&
         concepts == other.concepts &&
-        image == other.image;
+        image == other.image &&
+        description == other.description;
   }
 
   @override
@@ -1416,6 +1628,7 @@ class _$GRelicQueryData_relic_planarSphere
     _$hash = $jc(_$hash, G__typename.hashCode);
     _$hash = $jc(_$hash, concepts.hashCode);
     _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -1425,7 +1638,8 @@ class _$GRelicQueryData_relic_planarSphere
     return (newBuiltValueToStringHelper(r'GRelicQueryData_relic_planarSphere')
           ..add('G__typename', G__typename)
           ..add('concepts', concepts)
-          ..add('image', image))
+          ..add('image', image)
+          ..add('description', description))
         .toString();
   }
 }
@@ -1448,6 +1662,10 @@ class GRelicQueryData_relic_planarSphereBuilder
   String? get image => _$this._image;
   set image(String? image) => _$this._image = image;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   GRelicQueryData_relic_planarSphereBuilder() {
     GRelicQueryData_relic_planarSphere._initializeBuilder(this);
   }
@@ -1458,6 +1676,7 @@ class GRelicQueryData_relic_planarSphereBuilder
       _G__typename = $v.G__typename;
       _concepts = $v.concepts;
       _image = $v.image;
+      _description = $v.description;
       _$v = null;
     }
     return this;
@@ -1486,7 +1705,148 @@ class GRelicQueryData_relic_planarSphereBuilder
             concepts: BuiltValueNullFieldError.checkNotNull(
                 concepts, r'GRelicQueryData_relic_planarSphere', 'concepts'),
             image: BuiltValueNullFieldError.checkNotNull(
-                image, r'GRelicQueryData_relic_planarSphere', 'image'));
+                image, r'GRelicQueryData_relic_planarSphere', 'image'),
+            description: BuiltValueNullFieldError.checkNotNull(description,
+                r'GRelicQueryData_relic_planarSphere', 'description'));
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GRelicQueryData_relic_linkRope extends GRelicQueryData_relic_linkRope {
+  @override
+  final String G__typename;
+  @override
+  final String concepts;
+  @override
+  final String image;
+  @override
+  final String description;
+
+  factory _$GRelicQueryData_relic_linkRope(
+          [void Function(GRelicQueryData_relic_linkRopeBuilder)? updates]) =>
+      (new GRelicQueryData_relic_linkRopeBuilder()..update(updates))._build();
+
+  _$GRelicQueryData_relic_linkRope._(
+      {required this.G__typename,
+      required this.concepts,
+      required this.image,
+      required this.description})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, r'GRelicQueryData_relic_linkRope', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(
+        concepts, r'GRelicQueryData_relic_linkRope', 'concepts');
+    BuiltValueNullFieldError.checkNotNull(
+        image, r'GRelicQueryData_relic_linkRope', 'image');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'GRelicQueryData_relic_linkRope', 'description');
+  }
+
+  @override
+  GRelicQueryData_relic_linkRope rebuild(
+          void Function(GRelicQueryData_relic_linkRopeBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GRelicQueryData_relic_linkRopeBuilder toBuilder() =>
+      new GRelicQueryData_relic_linkRopeBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GRelicQueryData_relic_linkRope &&
+        G__typename == other.G__typename &&
+        concepts == other.concepts &&
+        image == other.image &&
+        description == other.description;
+  }
+
+  @override
+  int get hashCode {
+    var _$hash = 0;
+    _$hash = $jc(_$hash, G__typename.hashCode);
+    _$hash = $jc(_$hash, concepts.hashCode);
+    _$hash = $jc(_$hash, image.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper(r'GRelicQueryData_relic_linkRope')
+          ..add('G__typename', G__typename)
+          ..add('concepts', concepts)
+          ..add('image', image)
+          ..add('description', description))
+        .toString();
+  }
+}
+
+class GRelicQueryData_relic_linkRopeBuilder
+    implements
+        Builder<GRelicQueryData_relic_linkRope,
+            GRelicQueryData_relic_linkRopeBuilder> {
+  _$GRelicQueryData_relic_linkRope? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _concepts;
+  String? get concepts => _$this._concepts;
+  set concepts(String? concepts) => _$this._concepts = concepts;
+
+  String? _image;
+  String? get image => _$this._image;
+  set image(String? image) => _$this._image = image;
+
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
+  GRelicQueryData_relic_linkRopeBuilder() {
+    GRelicQueryData_relic_linkRope._initializeBuilder(this);
+  }
+
+  GRelicQueryData_relic_linkRopeBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _concepts = $v.concepts;
+      _image = $v.image;
+      _description = $v.description;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GRelicQueryData_relic_linkRope other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GRelicQueryData_relic_linkRope;
+  }
+
+  @override
+  void update(void Function(GRelicQueryData_relic_linkRopeBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  GRelicQueryData_relic_linkRope build() => _build();
+
+  _$GRelicQueryData_relic_linkRope _build() {
+    final _$result = _$v ??
+        new _$GRelicQueryData_relic_linkRope._(
+            G__typename: BuiltValueNullFieldError.checkNotNull(
+                G__typename, r'GRelicQueryData_relic_linkRope', 'G__typename'),
+            concepts: BuiltValueNullFieldError.checkNotNull(
+                concepts, r'GRelicQueryData_relic_linkRope', 'concepts'),
+            image: BuiltValueNullFieldError.checkNotNull(
+                image, r'GRelicQueryData_relic_linkRope', 'image'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'GRelicQueryData_relic_linkRope', 'description'));
     replace(_$result);
     return _$result;
   }

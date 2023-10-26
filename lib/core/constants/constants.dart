@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AssetImages {
   static const String _base = 'assets/images';
   static String get background => '$_base/background.webp';
@@ -23,5 +25,11 @@ class AssetAnimations {
 
 const String authorization =
     "sasf5&*vuub)&b&\$*iHKngjGJHUy:*^*T^&RFVh3435gjgJHDHDTYh";
-const String interactiveMap =
-    'https://act.hoyolab.com/sr/app/interactive-map/index.html';
+const String interactiveMap = false
+    ? 'https://star-rail-map.appsample.com/'
+    : 'https://act.hoyolab.com/sr/app/interactive-map/index.html';
+
+const kBlackColor = Colors.black;
+const kTransparentColor = Colors.transparent;
+const kWhiteColor = Colors.white;
+const kBackgroundColor = Color(0xff1e1e1e);

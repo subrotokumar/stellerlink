@@ -54,13 +54,13 @@ abstract class GAllRelicQueryData_relics
   String get concepts;
   String get image;
   _i2.GRelicType get type;
-  String get setEffect;
   GAllRelicQueryData_relics_head? get head;
   GAllRelicQueryData_relics_hands? get hands;
   GAllRelicQueryData_relics_body? get body;
   GAllRelicQueryData_relics_feet? get feet;
   GAllRelicQueryData_relics_planarSphere? get planarSphere;
   GAllRelicQueryData_relics_linkRope? get linkRope;
+  String get setEffect;
   static Serializer<GAllRelicQueryData_relics> get serializer =>
       _$gAllRelicQueryDataRelicsSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -90,6 +90,8 @@ abstract class GAllRelicQueryData_relics_head
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
+  String get story;
   static Serializer<GAllRelicQueryData_relics_head> get serializer =>
       _$gAllRelicQueryDataRelicsHeadSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -119,6 +121,8 @@ abstract class GAllRelicQueryData_relics_hands
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
+  String get story;
   static Serializer<GAllRelicQueryData_relics_hands> get serializer =>
       _$gAllRelicQueryDataRelicsHandsSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -148,6 +152,8 @@ abstract class GAllRelicQueryData_relics_body
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
+  String get story;
   static Serializer<GAllRelicQueryData_relics_body> get serializer =>
       _$gAllRelicQueryDataRelicsBodySerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -177,6 +183,8 @@ abstract class GAllRelicQueryData_relics_feet
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
+  String get story;
   static Serializer<GAllRelicQueryData_relics_feet> get serializer =>
       _$gAllRelicQueryDataRelicsFeetSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -207,6 +215,8 @@ abstract class GAllRelicQueryData_relics_planarSphere
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
+  String get story;
   static Serializer<GAllRelicQueryData_relics_planarSphere> get serializer =>
       _$gAllRelicQueryDataRelicsPlanarSphereSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(
@@ -237,6 +247,8 @@ abstract class GAllRelicQueryData_relics_linkRope
   String get G__typename;
   String get concepts;
   String get image;
+  String get description;
+  String get story;
   static Serializer<GAllRelicQueryData_relics_linkRope> get serializer =>
       _$gAllRelicQueryDataRelicsLinkRopeSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

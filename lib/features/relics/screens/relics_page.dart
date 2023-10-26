@@ -3,16 +3,17 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:stellerlink/config/config.dart';
 
 import 'package:stellerlink/config/env/env.dart';
-import 'package:stellerlink/config/router/router.dart';
 import 'package:stellerlink/core/functions/relic.function.dart';
 import 'package:stellerlink/core/util/util.dart';
 import 'package:stellerlink/features/characters/widgets/loading_character_gridview.dart';
-import 'package:stellerlink/features/relics/screens/relic_info.dart';
+import 'package:stellerlink/features/home/mobile/material.dart';
 import 'package:stellerlink/services/graphql/astral_express.dart';
 
 class RelicsPage extends StatefulWidget {
@@ -37,6 +38,7 @@ class _RelicsPageState extends State<RelicsPage> {
     final width = MediaQuery.of(context).size.width;
     return Consumer(builder: (context, ref, child) {
       return Scaffold(
+        bottomNavigationBar: const BottomNavBar(),
         backgroundColor: Colors.black,
         body: SafeArea(
           child: CustomScrollView(
@@ -45,7 +47,7 @@ class _RelicsPageState extends State<RelicsPage> {
                 forceMaterialTransparency: true,
                 elevation: 0,
                 pinned: true,
-                backgroundColor: Colors.black,
+                backgroundColor: Palette.raisinBlack,
                 title: Text(
                   'Relics',
                   style: GoogleFonts.poppins(
@@ -123,10 +125,9 @@ class _RelicsPageState extends State<RelicsPage> {
                         if (error != null) {
                           log.e(error);
                         }
-                        log.i({
-                          'operationRequest': 'GAllRelicReq()',
-                          'response': 'success',
-                        });
+                        response?.data?.relics
+                            .map((p0) => log.i('${p0.id} => ${p0.concepts}'))
+                            .toList();
                         var allCharacter = response?.data?.relics.toList();
                         allCharacter = allCharacter
                             ?.where(
@@ -136,11 +137,10 @@ class _RelicsPageState extends State<RelicsPage> {
                             )
                             .toList();
 
-                        if (search.text.isEmpty) {
-                          allCharacter?.sort(
-                            (a, b) => a.concepts.compareTo(b.concepts),
-                          );
-                        }
+                        allCharacter?.sort(
+                          (a, b) => a.concepts.compareTo(b.concepts),
+                        );
+
                         return MasonryGridView.count(
                             shrinkWrap: true,
                             padding:
@@ -169,78 +169,113 @@ class _RelicsPageState extends State<RelicsPage> {
                                   '';
 
                               return SizedBox(
-                                height: (width - 12 * 4) / 3 +
-                                    (relic?.type == GRelicType.CavernRelics
-                                        ? 30
-                                        : 0),
+                                height: (width) / 3 +
+                                    (relic?.type == GRelicType.CavernRelics &&
+                                            !search.text.isNotEmpty
+                                        ? 25
+                                        : 20),
                                 child: InkWell(
                                   onTap: () {
                                     if (relic == null) return;
-                                    showModalBottomSheet(
-                                      context: context,
-                                      isScrollControlled: true,
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(22),
-                                        ),
-                                      ),
-                                      builder: (context) {
-                                        return Container(
-                                            clipBehavior: Clip.hardEdge,
-                                            decoration: const BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.vertical(
-                                                top: Radius.circular(20),
-                                              ),
-                                            ),
-                                            child:
-                                                RelicInfoScreen(relic: relic));
-                                      },
-                                    );
-                                    // RelicInfoScreenRoute(
-                                    //         title: relic.concepts,
-                                    //         $extra: relic,
-                                    //         id: relic.id)
-                                    //     .go(context);
+                                    RelicInfoScreenRoute(
+                                            title: relic.concepts,
+                                            $extra: relic,
+                                            id: relic.id)
+                                        .go(context);
                                   },
-                                  child: Swiper(
-                                      autoplay: true,
-                                      autoplayDelay:
-                                          (index % 2 == 0 ? 10356 : 7345) +
-                                              Random().nextInt(10) * 500,
-                                      itemCount: len,
-                                      itemBuilder: (context, pageIndex) {
-                                        const header = {
-                                          'Authorization': Env.authorization
-                                        };
-                                        return Container(
-                                          padding: const EdgeInsets.all(10),
-                                          clipBehavior: Clip.hardEdge,
-                                          decoration: BoxDecoration(
-                                            color: getRelicCoolor(
-                                                    index + pageIndex,
-                                                    GRelicType.CavernRelics)
-                                                .withOpacity(0.3),
-                                            border: Border.all(
-                                                color: Colors.black45),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
+                                  onDoubleTap: () =>
+                                      showToast(context, '${relic?.concepts}'),
+                                  child: Container(
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black45),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: Swiper(
+                                            autoplay: true,
+                                            autoplayDelay: (index % 2 == 0
+                                                    ? 10356
+                                                    : 7345) +
+                                                Random().nextInt(10) * 500,
+                                            itemCount: len,
+                                            itemBuilder: (context, pageIndex) {
+                                              const header = {
+                                                'Authorization':
+                                                    Env.authorization
+                                              };
+                                              return AnimatedContainer(
+                                                alignment: Alignment.topCenter,
+                                                duration: 500.milliseconds,
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                clipBehavior: Clip.hardEdge,
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      getRelicCoolor(
+                                                              index + pageIndex,
+                                                              GRelicType
+                                                                  .CavernRelics)
+                                                          .withOpacity(0.5),
+                                                      getRelicCoolor(
+                                                              index + pageIndex,
+                                                              GRelicType
+                                                                  .CavernRelics)
+                                                          .withOpacity(0.3),
+                                                    ],
+                                                    begin: Alignment.topRight,
+                                                    end: Alignment.bottomLeft,
+                                                  ),
+                                                ),
+                                                child: Hero(
+                                                  tag:
+                                                      '${relic?.id} $pageIndex',
+                                                  child: CachedNetworkImage(
+                                                    fit: BoxFit.contain,
+                                                    imageUrl:
+                                                        '${Env.imgEndpoint}${img(pageIndex)}',
+                                                    httpHeaders: header,
+                                                    errorWidget: (c, url, e) {
+                                                      log.e(url);
+                                                      return const SizedBox();
+                                                    },
+                                                  ),
+                                                ),
+                                              );
+                                            },
                                           ),
-                                          child: Hero(
-                                            tag: '${relic?.id} $pageIndex',
-                                            child: CachedNetworkImage(
-                                              fit: BoxFit.contain,
-                                              imageUrl:
-                                                  '${Env.endpoint}${img(pageIndex)}',
-                                              httpHeaders: header,
-                                              errorWidget: (c, url, e) {
-                                                log.e(url);
-                                                return const SizedBox();
-                                              },
+                                        ),
+                                        Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 5,
+                                              vertical: 4,
+                                            ),
+                                            child: Text(
+                                              relic?.concepts ?? '',
+                                              maxLines: 2,
+                                              textAlign: TextAlign.left,
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.grey.shade800,
+                                                  shadows: [
+                                                    const Shadow(
+                                                      color: Colors.white38,
+                                                      blurRadius: 2,
+                                                      offset: Offset(1, 1),
+                                                    )
+                                                  ]),
                                             ),
                                           ),
-                                        );
-                                      }),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               );
                             });

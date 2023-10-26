@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stellerlink/core/constants/constants.dart';
+import 'package:stellerlink/features/home/mobile/material.dart';
 
 class InAppWebviewScreen extends StatefulWidget {
   const InAppWebviewScreen({super.key, this.url});
@@ -33,40 +34,44 @@ class InAppWebviewScreenState extends State<InAppWebviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        InAppWebView(
-          initialUrlRequest: URLRequest(url: Uri.parse(url)),
-          initialOptions: InAppWebViewGroupOptions(
-            crossPlatform: InAppWebViewOptions(
-              cacheEnabled: true,
+    return Scaffold(
+      bottomNavigationBar: const BottomNavBar(),
+      body: Stack(
+        children: [
+          InAppWebView(
+            initialUrlRequest: URLRequest(url: Uri.parse(url)),
+            initialOptions: InAppWebViewGroupOptions(
+              crossPlatform: InAppWebViewOptions(
+                cacheEnabled: true,
+              ),
             ),
+            onWebViewCreated: (InAppWebViewController controller) {
+              webViewController = controller;
+              setState(() {
+                isLoaded = true;
+              });
+            },
+            onLoadStart: (InAppWebViewController controller, Uri? url) {
+              setState(() {
+                this.url = url.toString();
+              });
+            },
+            onProgressChanged:
+                (InAppWebViewController controller, int progress) {
+              setState(() {
+                this.progress = progress / 100;
+                isLoaded = isLoaded == true ? true : this.progress == 1;
+              });
+            },
           ),
-          onWebViewCreated: (InAppWebViewController controller) {
-            webViewController = controller;
-            setState(() {
-              isLoaded = true;
-            });
-          },
-          onLoadStart: (InAppWebViewController controller, Uri? url) {
-            setState(() {
-              this.url = url.toString();
-            });
-          },
-          onProgressChanged: (InAppWebViewController controller, int progress) {
-            setState(() {
-              this.progress = progress / 100;
-              isLoaded = isLoaded == true ? true : this.progress == 1;
-            });
-          },
-        ),
-        Visibility(
-          visible: !isLoaded,
-          child: Center(
-            child: LottieBuilder.asset(AssetAnimations.map),
-          ),
-        )
-      ],
+          Visibility(
+            visible: !isLoaded,
+            child: Center(
+              child: LottieBuilder.asset(AssetAnimations.map),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

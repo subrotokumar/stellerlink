@@ -16,6 +16,16 @@ import 'package:stellerlink/services/graphql/generated/all_character_query.req.g
     show GAllCharacterReq;
 import 'package:stellerlink/services/graphql/generated/all_character_query.var.gql.dart'
     show GAllCharacterVars;
+import 'package:stellerlink/services/graphql/generated/all_lightcone_query.data.gql.dart'
+    show
+        GAllLightConesQueryData,
+        GAllLightConesQueryData_lightCones,
+        GAllLightConesQueryData_lightCones_ascensionMaterials,
+        GAllLightConesQueryData_lightCones_ascensionMaterials_material;
+import 'package:stellerlink/services/graphql/generated/all_lightcone_query.req.gql.dart'
+    show GAllLightConesQueryReq;
+import 'package:stellerlink/services/graphql/generated/all_lightcone_query.var.gql.dart'
+    show GAllLightConesQueryVars;
 import 'package:stellerlink/services/graphql/generated/all_relics_query.data.gql.dart'
     show
         GAllRelicQueryData,
@@ -51,6 +61,7 @@ import 'package:stellerlink/services/graphql/generated/relic_query.data.gql.dart
         GRelicQueryData_relic_feet,
         GRelicQueryData_relic_hands,
         GRelicQueryData_relic_head,
+        GRelicQueryData_relic_linkRope,
         GRelicQueryData_relic_planarSphere;
 import 'package:stellerlink/services/graphql/generated/relic_query.req.gql.dart'
     show GRelicQueryReq;
@@ -66,6 +77,7 @@ import 'package:stellerlink/services/graphql/generated/schema.schema.gql.dart'
         GMaterialInput,
         GPath,
         GRelicType,
+        GSetType,
         GStatItemInput;
 
 part 'serializers.gql.g.dart';
@@ -79,6 +91,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GAllCharacterData_characters_images,
   GAllCharacterReq,
   GAllCharacterVars,
+  GAllLightConesQueryData,
+  GAllLightConesQueryData_lightCones,
+  GAllLightConesQueryData_lightCones_ascensionMaterials,
+  GAllLightConesQueryData_lightCones_ascensionMaterials_material,
+  GAllLightConesQueryReq,
+  GAllLightConesQueryVars,
   GAllRelicQueryData,
   GAllRelicQueryData_relics,
   GAllRelicQueryData_relics_body,
@@ -111,10 +129,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GRelicQueryData_relic_feet,
   GRelicQueryData_relic_hands,
   GRelicQueryData_relic_head,
+  GRelicQueryData_relic_linkRope,
   GRelicQueryData_relic_planarSphere,
   GRelicQueryReq,
   GRelicQueryVars,
   GRelicType,
+  GSetType,
   GStatItemInput,
 ])
 final Serializers serializers = _serializersBuilder.build();

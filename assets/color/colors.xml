@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_70">#EEEEEE</color>
+    <color name="gray_410">#979797</color>
+    <color name="crimson_red" type="material">#CF2A2A</color>
+    <color name="yellow_ocher" type="material material-accent">#DF9527</color>
+    <color name="murrey" type="material material-accent">#861657</color>
+    <color name="redwoord" type="material material-accent">#A64253</color>
+    <color name="thulian_pink" type="material material-accent">#D56AA0</color>
+    <color name="celadon" type="material material-accent">#bbdbb4</color>
+    <color name="cornsilk" type="material material-accent">#fcf0cc</color>
+    <color name="prussuan_blue " type="material material-accent">#003554</color>
+    <color name="purpureus" type="material material-accent">#944bbb</color>
+    <color name="chocolate_cosmos" type="material material-accent">#471323</color>
+    <color name="rose_quartz" type="material material-accent">#471323</color>
+    <color name="roseberry_rose" type="material material-accent">#a53860</color>
+    <color name="mint" type="material material-accent">#61c9a8</color>
+    <color name="english_violet" type="material material-accent">#4C3B4D</color>
+    <color name="dark_purple" type="material material-accent">#31263E</color>
+    <color name="raisin" type="material material-accent">#221E22</color>
+</resources>

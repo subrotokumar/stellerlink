@@ -45,11 +45,15 @@ class _$GGetCharacterByIdDataSerializer
       '__typename',
       serializers.serialize(object.G__typename,
           specifiedType: const FullType(String)),
-      'character',
-      serializers.serialize(object.character,
-          specifiedType: const FullType(GGetCharacterByIdData_character)),
     ];
-
+    Object? value;
+    value = object.character;
+    if (value != null) {
+      result
+        ..add('character')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(GGetCharacterByIdData_character)));
+    }
     return result;
   }
 
@@ -634,19 +638,16 @@ class _$GGetCharacterByIdData extends GGetCharacterByIdData {
   @override
   final String G__typename;
   @override
-  final GGetCharacterByIdData_character character;
+  final GGetCharacterByIdData_character? character;
 
   factory _$GGetCharacterByIdData(
           [void Function(GGetCharacterByIdDataBuilder)? updates]) =>
       (new GGetCharacterByIdDataBuilder()..update(updates))._build();
 
-  _$GGetCharacterByIdData._(
-      {required this.G__typename, required this.character})
+  _$GGetCharacterByIdData._({required this.G__typename, this.character})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, r'GGetCharacterByIdData', 'G__typename');
-    BuiltValueNullFieldError.checkNotNull(
-        character, r'GGetCharacterByIdData', 'character');
   }
 
   @override
@@ -706,7 +707,7 @@ class GGetCharacterByIdDataBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _character = $v.character.toBuilder();
+      _character = $v.character?.toBuilder();
       _$v = null;
     }
     return this;
@@ -733,12 +734,12 @@ class GGetCharacterByIdDataBuilder
           new _$GGetCharacterByIdData._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, r'GGetCharacterByIdData', 'G__typename'),
-              character: character.build());
+              character: _character?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'character';
-        character.build();
+        _character?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'GGetCharacterByIdData', _$failedField, e.toString());

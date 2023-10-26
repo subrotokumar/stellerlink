@@ -13,6 +13,13 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAllCharacterData_characters_images.serializer)
       ..add(GAllCharacterReq.serializer)
       ..add(GAllCharacterVars.serializer)
+      ..add(GAllLightConesQueryData.serializer)
+      ..add(GAllLightConesQueryData_lightCones.serializer)
+      ..add(GAllLightConesQueryData_lightCones_ascensionMaterials.serializer)
+      ..add(GAllLightConesQueryData_lightCones_ascensionMaterials_material
+          .serializer)
+      ..add(GAllLightConesQueryReq.serializer)
+      ..add(GAllLightConesQueryVars.serializer)
       ..add(GAllRelicQueryData.serializer)
       ..add(GAllRelicQueryData_relics.serializer)
       ..add(GAllRelicQueryData_relics_body.serializer)
@@ -46,15 +53,21 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GRelicQueryData_relic_feet.serializer)
       ..add(GRelicQueryData_relic_hands.serializer)
       ..add(GRelicQueryData_relic_head.serializer)
+      ..add(GRelicQueryData_relic_linkRope.serializer)
       ..add(GRelicQueryData_relic_planarSphere.serializer)
       ..add(GRelicQueryReq.serializer)
       ..add(GRelicQueryVars.serializer)
       ..add(GRelicType.serializer)
+      ..add(GSetType.serializer)
       ..add(GStatItemInput.serializer)
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GAllCharacterData_characters)]),
           () => new ListBuilder<GAllCharacterData_characters>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GAllLightConesQueryData_lightCones)]),
+          () => new ListBuilder<GAllLightConesQueryData_lightCones>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GAllRelicQueryData_relics)]),
@@ -91,7 +104,14 @@ Serializers _$serializers = (new Serializers().toBuilder()
           () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>()))
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType.nullable(
+                GAllLightConesQueryData_lightCones_ascensionMaterials)
+          ]),
+          () => new ListBuilder<
+              GAllLightConesQueryData_lightCones_ascensionMaterials?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

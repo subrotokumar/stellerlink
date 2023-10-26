@@ -10,6 +10,7 @@ import 'package:stellerlink/config/router/router.dart';
 import 'package:stellerlink/core/functions/character.function.dart';
 import 'package:stellerlink/core/util/util.dart';
 import 'package:stellerlink/features/characters/widgets/loading_character_gridview.dart';
+import 'package:stellerlink/features/home/mobile/material.dart';
 import 'package:stellerlink/services/graphql/astral_express.dart';
 
 class CharacterPage extends StatefulWidget {
@@ -35,6 +36,7 @@ class _CharacterPageState extends State<CharacterPage> {
     return Consumer(builder: (context, ref, child) {
       return Scaffold(
         backgroundColor: Colors.black,
+        bottomNavigationBar: const BottomNavBar(),
         body: SafeArea(
           child: CustomScrollView(
             slivers: [
@@ -161,7 +163,7 @@ class _CharacterPageState extends State<CharacterPage> {
                                     child: CachedNetworkImage(
                                       fit: BoxFit.cover,
                                       imageUrl:
-                                          '${Env.endpoint}/${character?.images?.profile ?? ''}',
+                                          '${Env.imgEndpoint}/${character?.images?.profile ?? ''}',
                                       httpHeaders: const {
                                         'Authorization': Env.authorization
                                       },

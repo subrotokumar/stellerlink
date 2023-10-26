@@ -1,0 +1,22 @@
+query AllLightConesQuery {
+  lightCones {
+    id
+    concepts
+    rarity
+    path
+    description
+    skill_name
+    skill
+    story
+    icon
+    largeIcon
+    ascensionMaterials {
+      material {
+        concepts
+        icon
+        id
+      }
+      quantity
+    }
+  }
+}

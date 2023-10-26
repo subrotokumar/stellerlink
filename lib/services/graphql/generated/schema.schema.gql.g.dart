@@ -106,6 +106,42 @@ final BuiltSet<GRelicType> _$gRelicTypeValues =
   _$gRelicTypePlanarOrnaments,
 ]);
 
+const GSetType _$gSetTypehead = const GSetType._('head');
+const GSetType _$gSetTypeheads = const GSetType._('heads');
+const GSetType _$gSetTypebody = const GSetType._('body');
+const GSetType _$gSetTypefeet = const GSetType._('feet');
+const GSetType _$gSetTypeplanarSphere = const GSetType._('planarSphere');
+const GSetType _$gSetTypelinkRope = const GSetType._('linkRope');
+
+GSetType _$gSetTypeValueOf(String name) {
+  switch (name) {
+    case 'head':
+      return _$gSetTypehead;
+    case 'heads':
+      return _$gSetTypeheads;
+    case 'body':
+      return _$gSetTypebody;
+    case 'feet':
+      return _$gSetTypefeet;
+    case 'planarSphere':
+      return _$gSetTypeplanarSphere;
+    case 'linkRope':
+      return _$gSetTypelinkRope;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<GSetType> _$gSetTypeValues =
+    new BuiltSet<GSetType>(const <GSetType>[
+  _$gSetTypehead,
+  _$gSetTypeheads,
+  _$gSetTypebody,
+  _$gSetTypefeet,
+  _$gSetTypeplanarSphere,
+  _$gSetTypelinkRope,
+]);
+
 Serializer<GAscensionMaterialsInput> _$gAscensionMaterialsInputSerializer =
     new _$GAscensionMaterialsInputSerializer();
 Serializer<GCharacterInput> _$gCharacterInputSerializer =
@@ -118,6 +154,7 @@ Serializer<GMaterialInput> _$gMaterialInputSerializer =
     new _$GMaterialInputSerializer();
 Serializer<GPath> _$gPathSerializer = new _$GPathSerializer();
 Serializer<GRelicType> _$gRelicTypeSerializer = new _$GRelicTypeSerializer();
+Serializer<GSetType> _$gSetTypeSerializer = new _$GSetTypeSerializer();
 Serializer<GStatItemInput> _$gStatItemInputSerializer =
     new _$GStatItemInputSerializer();
 
@@ -527,6 +564,23 @@ class _$GRelicTypeSerializer implements PrimitiveSerializer<GRelicType> {
   GRelicType deserialize(Serializers serializers, Object serialized,
           {FullType specifiedType = FullType.unspecified}) =>
       GRelicType.valueOf(serialized as String);
+}
+
+class _$GSetTypeSerializer implements PrimitiveSerializer<GSetType> {
+  @override
+  final Iterable<Type> types = const <Type>[GSetType];
+  @override
+  final String wireName = 'GSetType';
+
+  @override
+  Object serialize(Serializers serializers, GSetType object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      object.name;
+
+  @override
+  GSetType deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      GSetType.valueOf(serialized as String);
 }
 
 class _$GStatItemInputSerializer

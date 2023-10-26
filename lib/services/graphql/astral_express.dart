@@ -20,6 +20,11 @@ export '../graphql/generated/all_relics_query.data.gql.dart';
 export '../graphql/generated/all_relics_query.req.gql.dart';
 export '../graphql/generated/all_relics_query.var.gql.dart';
 
+// all_lightcones_query.../graphql
+export '../graphql/generated/all_lightcone_query.data.gql.dart';
+export '../graphql/generated/all_lightcone_query.req.gql.dart';
+export '../graphql/generated/all_lightcone_query.var.gql.dart';
+
 // Ferry
 export 'package:ferry_flutter/ferry_flutter.dart';
 export 'package:ferry/ferry.dart';
@@ -50,11 +55,12 @@ Future<Client> initClient({FetchPolicy? fetchPolicy}) async {
     print(policy);
   }
   final store = HiveStore(box);
-  final cache = Cache(store: store, possibleTypes: possibleTypesMap);
-  final client = Client(
-    link: httpLink,
-    cache: cache,
+  final cache = Cache(
+    store: store,
+    possibleTypes: possibleTypesMap,
   );
+  final client =
+      Client(link: httpLink, cache: cache, defaultFetchPolicies: policy);
 
   return client;
 }
